@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SneakersApp</string>
+    <string name="menu_button">Menu button</string>
+    <string name="label_feed">Feed</string>
+    <string name="label_favourites">Favourites</string>
+    <string name="label_cart">Cart</string>
+    <string name="label_profile">Profile</string>
+    <string name="pattern_price">$%1$s</string>
 </resources>
