@@ -1,9 +1,30 @@
 <resources>
     <string name="app_name">SneakersApp</string>
     <string name="menu_button">Menu button</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
+    <string name="person">Full name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="or">Or</string>
+    <string name="new_to">New to</string>
+    <string name="register">Register</string>
+    <string name="continue_text">Continue</string>
+    <string name="back_button">Back button</string>
+    <string name="register_agree_text">By signing up, you\'re agree to our</string>
+    <string name="terms_conditions">Terms &amp; Conditions</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="and_text">And</string>
+    <string name="login_or_password">Login or Password incorrect</string>
+    <string name="notifications">Notifications</string>
+    <string name="new_notifications">New notifications</string>
+    <string name="next">Next</string>
+    <string name="sign_in">SignIn</string>
     <string name="label_feed">Feed</string>
-    <string name="label_favourites">Favourites</string>
+    <string name="label_favourites">Favoutires</string>
     <string name="label_cart">Cart</string>
     <string name="label_profile">Profile</string>
-    <string name="pattern_price">$%1$s</string>
 </resources>
