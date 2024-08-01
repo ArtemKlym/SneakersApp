@@ -7,23 +7,23 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
-import com.artemklymenko.sneakersapp.ui.theme.Purple40
 
 @Composable
 fun WelcomeScreen(
     viewModel: WelcomeViewModel,
-    onNavigationNext: () -> Unit
+    onNavigationToSignIn: () -> Unit,
+    onNavigationToSignUp: () -> Unit
 ) {
     Scaffold(
         topBar = { TopBar() },
         content = {
             WelcomeScreenContent(
                 modifier = Modifier.padding(it),
-                onNavigationNext = onNavigationNext
+                onNavigationToSignIn = onNavigationToSignIn,
+                onNavigationToSignUp = onNavigationToSignUp
             )
         }
     )
@@ -39,21 +39,27 @@ private fun TopBar() {
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-        },
-        colors = TopAppBarDefaults.mediumTopAppBarColors(Purple40)
+        }
     )
 }
 
 @Composable
 private fun WelcomeScreenContent(
     modifier: Modifier,
-    onNavigationNext: () -> Unit
+    onNavigationToSignIn: () -> Unit,
+    onNavigationToSignUp: () -> Unit
 ) {
     Column(modifier = modifier) {
         Text(
-            text = "Welcome screen",
+            text = "Navigate to Sign In",
             modifier = modifier.clickable {
-                onNavigationNext.invoke()
+                onNavigationToSignIn.invoke()
+            }
+        )
+        Text(
+            text = "Navigate to Sign Up",
+            modifier = modifier.clickable {
+                onNavigationToSignUp.invoke()
             }
         )
     }
