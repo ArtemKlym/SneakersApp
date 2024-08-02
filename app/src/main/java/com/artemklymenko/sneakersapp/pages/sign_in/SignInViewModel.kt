@@ -6,4 +6,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(): ViewModel(){
+
+    fun loginRequest(login: String, password: String): Boolean {
+        return (login == "test@test.com" && password == "password")
+    }
 }
