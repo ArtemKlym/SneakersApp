@@ -82,15 +82,37 @@ fun RootAppNavigation(
             val viewModel = hiltViewModel<SignUpViewModel>()
             SignUpScreen(
                 viewModel = viewModel,
-                onNavigationNext = {
+                onBackClick = {
                     navController.navigate(route = Routes.Welcome.route) {
                         popUpTo(0)
                     }
-                }
+                },
+                onNextClick = {
+                    navController.navigate(route = Routes.Main.route) {
+                        popUpTo(0)
+                    }
+                },
+                onTermsClick = {
+                    //TODO: TBD.
+                },
+                onPrivacyClick = {
+                    //TODO: TBD.
+                },
             )
         }
         composable(Routes.Main.route) {
-            MainScreen()
+            MainScreen(
+                onNavigateToProduct = {
+                    navController.navigate(route = Routes.Product.getProductById("null"))
+                },
+                onNavigateToNotifications = {
+                    navController.navigate(route = Routes.Notifications.route)
+                },
+                onNavigateToConfirmation = {
+                    navController.navigate(route = Routes.Confirmation.route)
+                },
+                onChangeFavourite = {}
+            )
         }
     }
 }
