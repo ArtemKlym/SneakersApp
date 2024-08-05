@@ -24,7 +24,12 @@ import com.artemklymenko.sneakersapp.navigation.NestedAppNavigation
 import com.artemklymenko.sneakersapp.navigation.Routes
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    onNavigateToProduct: (Long) -> Unit,
+    onNavigateToNotifications: () -> Unit,
+    onNavigateToConfirmation: () -> Unit,
+    onChangeFavourite: (Long) -> Unit
+) {
     val navController = rememberNavController()
     val navGraphs: List<Routes> = listOf(
         Routes.Feed,
@@ -79,7 +84,10 @@ fun MainScreen() {
                 .fillMaxSize()
                 .padding(bottom = it.calculateBottomPadding()),
             navController = navController,
-            startDestination = Routes.Feed.route
+            onNavigateToProduct = onNavigateToProduct,
+            onNavigateToNotifications = onNavigateToNotifications,
+            onNavigateToConfirmation = onNavigateToConfirmation,
+            onChangeFavourite = onChangeFavourite,
         )
     }
 }
