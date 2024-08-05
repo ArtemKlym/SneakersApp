@@ -1,6 +1,11 @@
 package com.artemklymenko.sneakersapp.navigation
 
 sealed class Routes(val route: String) {
+
+    companion object {
+        const val PRODUCT_ID = "product_id"
+    }
+
     /**
      * Entry point
      */
@@ -21,10 +26,24 @@ sealed class Routes(val route: String) {
      * Main screen: first page
      */
     data object Main: Routes("main")
-    data object Feed: Routes("main/feed")
+    /**
+     * Main screen: first page
+     */
+    data object Feed : Routes("feed")
     data object Search : Routes("feed/search")
+    data object Product : Routes("feed/{$PRODUCT_ID}") {
+        fun getProductById(id: String): String {
+            return "feed/$id"
+        }
+    }
+
+    // MainScreen: second page
     data object Favourites: Routes("main/favourites")
+
+    //MainScreen: third page
     data object Cart: Routes("main/cart")
+
+    //MainScreen: fourth page
     data object Profile: Routes("main/profile")
 
     /**
@@ -34,4 +53,12 @@ sealed class Routes(val route: String) {
     data object FavouritesGraph : Routes("favourites_graph")
     data object CartGraph : Routes("cart_graph")
     data object ProfileGraph : Routes("profile_graph")
+
+
+    /**
+     * Independent single screens
+     */
+    data object Notifications : Routes("notifications")
+    data object Confirmation : Routes("confirmation")
+    data object Success : Routes("success")
 }
