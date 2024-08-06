@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.artemklymenko.sneakersapp.R
@@ -47,7 +48,15 @@ fun MainScreen(
                     NavigationBarItem(
                         selected = currentDestination?.hierarchy?.
                         any { it.route == graph.route } == true,
-                        onClick = { /*TODO*/ },
+                        onClick = {
+                            navController.navigate(graph.route) {
+                                popUpTo(navController.graph.findStartDestination().id) {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        },
                         icon = {
                             Icon(
                                 contentDescription = null,
