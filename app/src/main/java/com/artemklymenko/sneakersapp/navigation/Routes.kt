@@ -38,13 +38,17 @@ sealed class Routes(val route: String) {
     }
 
     // MainScreen: second page
-    data object Favourites: Routes("main/favourites")
+    data object Favourites: Routes("favourites")
 
     //MainScreen: third page
-    data object Cart: Routes("main/cart")
+    data object Cart: Routes("cart")
 
     //MainScreen: fourth page
-    data object Profile: Routes("main/profile")
+    data object Profile: Routes("profile")
+    data object Settings: Routes("profile/settings")
+    data object Personal: Routes("profile/personal")
+    data object Address: Routes("profile/address")
+    data object Billing: Routes("profile/billing")
 
     /**
      * Nested Graphs

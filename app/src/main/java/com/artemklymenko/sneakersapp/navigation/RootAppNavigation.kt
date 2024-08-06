@@ -7,13 +7,21 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.artemklymenko.sneakersapp.pages.confirm.ConfirmScreen
+import com.artemklymenko.sneakersapp.pages.confirm.ConfirmViewModel
 import com.artemklymenko.sneakersapp.pages.main.MainScreen
+import com.artemklymenko.sneakersapp.pages.notifications.NotificationsScreen
+import com.artemklymenko.sneakersapp.pages.notifications.NotificationsViewModel
+import com.artemklymenko.sneakersapp.pages.product.ProductScreen
+import com.artemklymenko.sneakersapp.pages.product.ProductViewModel
 import com.artemklymenko.sneakersapp.pages.sign_in.SignInScreen
 import com.artemklymenko.sneakersapp.pages.sign_in.SignInViewModel
 import com.artemklymenko.sneakersapp.pages.sign_up.SignUpScreen
 import com.artemklymenko.sneakersapp.pages.sign_up.SignUpViewModel
 import com.artemklymenko.sneakersapp.pages.splash.SplashScreen
 import com.artemklymenko.sneakersapp.pages.splash.SplashViewModel
+import com.artemklymenko.sneakersapp.pages.success.SuccessScreen
+import com.artemklymenko.sneakersapp.pages.success.SuccessViewModel
 import com.artemklymenko.sneakersapp.pages.welcome.WelcomeScreen
 import com.artemklymenko.sneakersapp.pages.welcome.WelcomeViewModel
 
@@ -26,7 +34,8 @@ fun RootAppNavigation(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = startDestination
+        startDestination = startDestination,
+        route = null
     ) {
         composable(Routes.Splash.route) {
             val viewModel = hiltViewModel<SplashViewModel>()
@@ -113,6 +122,38 @@ fun RootAppNavigation(
                 },
                 onChangeFavourite = {}
             )
+        }
+
+        composable(Routes.Product.route){
+            val viewModel = hiltViewModel<ProductViewModel>()
+            ProductScreen(viewModel = viewModel) {
+                navController.popBackStack()
+            }
+        }
+
+        composable(Routes.Confirmation.route){
+            val viewModel = hiltViewModel<ConfirmViewModel>()
+            ConfirmScreen(
+                viewModel = viewModel,
+                onNavigateToSuccess = {
+                    navController.navigate(Routes.Success.route)
+                }) {
+                navController.popBackStack()
+            }
+        }
+
+        composable(Routes.Success.route){
+            val viewModel = hiltViewModel<SuccessViewModel>()
+            SuccessScreen(viewModel = viewModel) {
+                navController.navigate(Routes.Main.route)
+            }
+        }
+
+        composable(Routes.Notifications.route){
+            val viewModel = hiltViewModel<NotificationsViewModel>()
+            NotificationsScreen(viewModel = viewModel) {
+                navController.popBackStack()
+            }
         }
     }
 }
