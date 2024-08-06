@@ -14,17 +14,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.artemklymenko.sneakersapp.R
@@ -37,7 +34,6 @@ fun WelcomeScreen(
     onNavigationToSignUp: () -> Unit
 ) {
     Scaffold(
-        topBar = { TopBar() },
         content = {
             WelcomeScreenContent(
                 modifier = Modifier.padding(it)
@@ -94,20 +90,6 @@ fun WelcomeScreenContent(modifier: Modifier) {
             }
         }
     }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun TopBar() {
-    TopAppBar(
-        title = {
-            Text(
-                text = "Welcome",
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-    )
 }
 
 @Composable
