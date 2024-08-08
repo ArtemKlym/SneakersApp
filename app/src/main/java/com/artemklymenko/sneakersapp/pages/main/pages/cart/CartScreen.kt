@@ -19,7 +19,7 @@ fun CartScreen(
 ) {
     Scaffold(
         topBar = {
-            TopBar(title = "Cart", isEnableBackIcon = false)
+            TopBar(title = "Cart")
         },
         content = {
             CartScreenContent(

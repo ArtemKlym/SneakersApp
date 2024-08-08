@@ -18,10 +18,7 @@ fun SuccessScreen(
 ) {
     Scaffold(
         topBar = {
-            TopBar(
-                title = "Success",
-                isEnableBackIcon = false
-            )
+            TopBar(title = "Success")
         },
         content = {
             SuccessScreenContent(

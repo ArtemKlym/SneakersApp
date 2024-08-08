@@ -21,10 +21,7 @@ fun ProfileScreen(
 ) {
     Scaffold(
         topBar = {
-            TopBar(
-                title = "Profile",
-                isEnableBackIcon = false
-            )
+            TopBar(title = "Profile")
         },
         content = {
             ProfileScreenContent(
