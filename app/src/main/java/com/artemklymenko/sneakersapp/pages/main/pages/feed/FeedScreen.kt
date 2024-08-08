@@ -20,7 +20,7 @@ fun FeedScreen(
 ) {
     Scaffold(
         topBar = {
-            TopBar(title = "Feed", isEnableBackIcon = false)
+            TopBar(title = "Feed")
         },
         content = {
             FeedScreenContent(

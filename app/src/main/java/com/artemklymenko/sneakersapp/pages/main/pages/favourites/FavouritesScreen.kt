@@ -18,7 +18,7 @@ fun FavouritesScreen(
 ) {
     Scaffold(
         topBar = {
-            TopBar(title = "Favourites", isEnableBackIcon = false)
+            TopBar(title = "Favourites")
         },
         content = {
             FavouritesScreenContent(
