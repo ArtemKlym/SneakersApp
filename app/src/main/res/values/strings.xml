@@ -28,4 +28,5 @@
     <string name="label_cart">Cart</string>
     <string name="label_profile">Profile</string>
     <string name="pattern_price">$%1$s</string>
+    <string name="buy_now">Buy now</string>
 </resources>

@@ -29,7 +29,7 @@ import com.artemklymenko.sneakersapp.pages.welcome.WelcomeViewModel
 fun RootAppNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Routes.Splash.route
+    startDestination: String = Routes.Main.route
 ) {
     NavHost(
         modifier = modifier,
@@ -112,7 +112,7 @@ fun RootAppNavigation(
         composable(Routes.Main.route) {
             MainScreen(
                 onNavigateToProduct = {
-                    navController.navigate(route = Routes.Product.getProductById("null"))
+                    navController.navigate(route = Routes.Product.getProductById(it))
                 },
                 onNavigateToNotifications = {
                     navController.navigate(route = Routes.Notifications.route)
@@ -126,9 +126,17 @@ fun RootAppNavigation(
 
         composable(Routes.Product.route){
             val viewModel = hiltViewModel<ProductViewModel>()
-            ProductScreen(viewModel = viewModel) {
-                navController.popBackStack()
-            }
+            val id = it.arguments?.getString(Routes.PRODUCT_ID)?.toLong() ?: -1L
+            ProductScreen(
+                viewModel = viewModel,
+                id = id,
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                onBuyNowClick = {
+                    navController.navigate(Routes.Cart.route)
+                }
+            )
         }
 
         composable(Routes.Confirmation.route){
