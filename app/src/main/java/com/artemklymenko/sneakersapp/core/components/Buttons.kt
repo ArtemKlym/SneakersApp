@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -34,20 +35,19 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun PrimaryButton(
     modifier: Modifier = Modifier,
-    isEnabled: Boolean = true,
     text: String,
+    isEnabled: Boolean = true,
+    roundDp: Dp = 8.dp,
     onClick: () -> Unit
 ) {
-    Box(
-        modifier = modifier
-    ) {
+    Box(modifier = modifier) {
         Button(
+            shape = RoundedCornerShape(roundDp),
+            onClick = onClick,
+            enabled = isEnabled,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(48.dp),
-            shape = RoundedCornerShape(8.dp),
-            onClick = onClick,
-            enabled = isEnabled
+                .height(48.dp)
         ) {
             Text(
                 text = text,
@@ -141,6 +141,29 @@ fun SmallButton(
                 text = text,
                 style = MaterialTheme.typography.titleMedium
             )
+        }
+    }
+}
+
+@Composable
+fun RoundedButton(
+    modifier: Modifier = Modifier,
+    icon: @Composable () -> Unit,
+    isEnabled: Boolean = true,
+    roundDp: Dp = 16.dp,
+    elevation: ButtonElevation = ButtonDefaults.buttonElevation(),
+    onClick: () -> Unit
+) {
+    Box(modifier = modifier) {
+        Button(
+            shape = RoundedCornerShape(roundDp),
+            enabled = isEnabled,
+            elevation = elevation,
+            contentPadding = PaddingValues(4.dp),
+            onClick = onClick,
+            modifier = modifier.size(48.dp)
+        ) {
+            icon.invoke()
         }
     }
 }
