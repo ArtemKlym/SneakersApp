@@ -267,4 +267,100 @@ object MockUtils {
     fun isProductInCart(id: Long): Boolean {
         return loadMockCart().map { it.id }.contains(id)
     }
+
+    fun loadMockFavourites(): List<ProductDetails> {
+        return listOf(
+            ProductDetails(
+                id = 1,
+                title = "Product 1",
+                description = LOREM_IPSUM_SOURCE,
+                category = "Hooded jacket",
+                price = 39.99,
+                imageUrls = listOf(
+                    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=0.672xw:1.00xh;0.166xw,0&resize=640:*",
+                    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=0.672xw:1.00xh;0.166xw,0&resize=640:*",
+                    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=0.672xw:1.00xh;0.166xw,0&resize=640:*",
+                ),
+                isFavourite = true
+            ),
+            ProductDetails(
+                id = 2,
+                title = "Product 2",
+                description = LOREM_IPSUM_SOURCE,
+                category = "Hooded jacket",
+                price = 39.99,
+                imageUrls = listOf(
+                    "https://i.natgeofe.com/n/87908698-fc7a-4ada-ba21-490521df2511/01-domesticated-dog_square.jpg",
+                    "https://i.natgeofe.com/n/87908698-fc7a-4ada-ba21-490521df2511/01-domesticated-dog_square.jpg",
+                    "https://i.natgeofe.com/n/87908698-fc7a-4ada-ba21-490521df2511/01-domesticated-dog_square.jpg",
+                ),
+                isFavourite = true
+            ),
+            ProductDetails(
+                id = 3,
+                title = "Product 3",
+                description = LOREM_IPSUM_SOURCE,
+                category = "Hooded jacket",
+                price = 52.85,
+                imageUrls = listOf(
+                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
+                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
+                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
+                ),
+                isFavourite = true
+            ),
+            ProductDetails(
+                id = 10,
+                title = "Product 10",
+                description = LOREM_IPSUM_SOURCE,
+                category = "Hooded jacket",
+                price = 55.55,
+                imageUrls = listOf(
+                    "https://www.forbes.com/advisor/wp-content/uploads/2021/03/pit-bull-featured.jpg",
+                    "https://www.forbes.com/advisor/wp-content/uploads/2021/03/pit-bull-featured.jpg",
+                    "https://www.forbes.com/advisor/wp-content/uploads/2021/03/pit-bull-featured.jpg",
+                ),
+                isFavourite = true
+            ),
+            ProductDetails(
+                id = 4,
+                title = "Product 4",
+                description = LOREM_IPSUM_SOURCE,
+                category = "Hooded jacket",
+                price = 74.42,
+                imageUrls = listOf(
+                    "https://www.8newsnow.com/wp-content/uploads/sites/59/2022/08/husky_eyes.jpg?w=1988&h=1440",
+                    "https://www.8newsnow.com/wp-content/uploads/sites/59/2022/08/husky_eyes.jpg?w=1988&h=1440",
+                    "https://www.8newsnow.com/wp-content/uploads/sites/59/2022/08/husky_eyes.jpg?w=1988&h=1440",
+                ),
+                isFavourite = true
+            ),
+            ProductDetails(
+                id = 8,
+                title = "Product 8",
+                description = LOREM_IPSUM_SOURCE,
+                category = "Hooded jacket",
+                price = 33.33,
+                imageUrls = listOf(
+                    "https://petsitterfrederick.com/wp-content/uploads/2021/04/5484d9d1eab8ea3017b17e29.jpeg",
+                    "https://petsitterfrederick.com/wp-content/uploads/2021/04/5484d9d1eab8ea3017b17e29.jpeg",
+                    "https://petsitterfrederick.com/wp-content/uploads/2021/04/5484d9d1eab8ea3017b17e29.jpeg",
+                ),
+                isFavourite = true
+            ),
+            ProductDetails(
+                id = 9,
+                title = "Product 9",
+                description = LOREM_IPSUM_SOURCE,
+                category = "Hooded jacket",
+                price = 44.44,
+                imageUrls = listOf(
+                    "https://www.laanimalservices.com/sites/default/files/2022-09/HOMEPAGE-HERO-MOBILE.png",
+                    "https://www.laanimalservices.com/sites/default/files/2022-09/HOMEPAGE-HERO-MOBILE.png",
+                    "https://www.laanimalservices.com/sites/default/files/2022-09/HOMEPAGE-HERO-MOBILE.png",
+                ),
+                isFavourite = true
+            ),
+        )
+    }
 }
