@@ -25,13 +25,14 @@ import com.artemklymenko.sneakersapp.R
 @Composable
 fun ProductImage(
     url: String,
-    onClick: () -> Unit
+    id: Long,
+    onNavigateToProduct: (Long) -> Unit
 ) {
     Image(
         modifier = Modifier
             .size(80.dp)
             .clip(RoundedCornerShape(12.dp))
-            .clickable { onClick.invoke() },
+            .clickable { onNavigateToProduct.invoke(id) },
         alignment = Alignment.Center,
         painter = rememberAsyncImagePainter(model = url),
         contentDescription = null,
