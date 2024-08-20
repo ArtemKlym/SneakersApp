@@ -120,7 +120,15 @@ fun RootAppNavigation(
                 onNavigateToConfirmation = {
                     navController.navigate(route = Routes.Confirmation.route)
                 },
-                onChangeFavourite = {}
+                onChangeFavourite = {
+                    navController.navigate(route = Routes.Favourites.route)
+                },
+                onNavigateToPromoCode = {
+                    navController.navigate(route = Routes.Promo.route)
+                },
+                onNavigateToCheckout = {
+                    navController.navigate(route = Routes.Checkout.route)
+                }
             )
         }
 
