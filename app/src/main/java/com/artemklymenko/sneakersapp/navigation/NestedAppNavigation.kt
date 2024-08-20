@@ -35,7 +35,9 @@ fun NestedAppNavigation(
     onNavigateToProduct: (Long) -> Unit,
     onNavigateToNotifications: () -> Unit,
     onNavigateToConfirmation: () -> Unit,
-    onChangeFavourite: (Long) -> Unit
+    onChangeFavourite: (Long) -> Unit,
+    onNavigateToPromoCode: () -> Unit,
+    onNavigateToCheckout: () -> Unit,
 ) {
     NavHost(
         modifier = modifier,
@@ -56,8 +58,9 @@ fun NestedAppNavigation(
 
         cartGraph(
             navController = navController,
-            onNavigateToProduct = onNavigateToProduct,
-            onNavigateToConfirm = onNavigateToConfirmation
+            onNavigateToPromoCode = onNavigateToPromoCode,
+            onNavigateToCheckout = onNavigateToCheckout,
+            onNavigateToProduct = onNavigateToProduct
         )
 
         profileGraph(
@@ -118,8 +121,9 @@ fun NavGraphBuilder.favouritesGraph(
 
 fun NavGraphBuilder.cartGraph(
     navController: NavHostController,
+    onNavigateToPromoCode: () -> Unit,
+    onNavigateToCheckout: () -> Unit,
     onNavigateToProduct: (Long) -> Unit,
-    onNavigateToConfirm: () -> Unit
 ) {
     navigation(
         startDestination = Routes.Cart.route,
@@ -129,8 +133,9 @@ fun NavGraphBuilder.cartGraph(
             val viewModel = hiltViewModel<CartViewModel>()
             CartScreen(
                 viewModel = viewModel,
-                onNavigateToConfirm = onNavigateToConfirm,
-                onNavigateToProduct = onNavigateToProduct
+                onNavigateToPromoCode = onNavigateToPromoCode,
+                onNavigateToCheckout = onNavigateToCheckout,
+                onNavigateToProduct = onNavigateToProduct,
             )
         }
     }

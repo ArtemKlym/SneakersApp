@@ -29,4 +29,11 @@
     <string name="label_profile">Profile</string>
     <string name="pattern_price">$%1$s</string>
     <string name="buy_now">Buy now</string>
+    <string name="cart">Cart</string>
+    <string name="checkout">Checkout</string>
+    <string name="promo_code">Promo/Student code or Voucher</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="shipping">Shipping</string>
+    <string name="discount">Discount</string>
+    <string name="total">Total</string>
 </resources>

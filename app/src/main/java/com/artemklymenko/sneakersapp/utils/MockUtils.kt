@@ -2,7 +2,9 @@ package com.artemklymenko.sneakersapp.utils
 
 import com.artemklymenko.sneakersapp.domain.models.Notification
 import com.artemklymenko.sneakersapp.domain.models.Product
+import com.artemklymenko.sneakersapp.domain.models.ProductCart
 import com.artemklymenko.sneakersapp.domain.models.ProductDetails
+import com.artemklymenko.sneakersapp.domain.models.ProductPrices
 
 object MockUtils {
 
@@ -224,42 +226,47 @@ object MockUtils {
             return loadMockProductsDetails().first { it.id == id }
         }
 
-    fun loadMockCart(): List<Product> {
+    fun loadMockCart(): List<ProductCart> {
         return listOf(
-            Product(
-                2,
-                "Product 2",
-                39.99,
-                "https://i.natgeofe.com/n/87908698-fc7a-4ada-ba21-490521df2511/01-domesticated-dog_square.jpg",
-                true
+            ProductCart(
+                id = 5,
+                title = "Product 5",
+                price = 95.21,
+                imageUrl = "https://www.thekennelclub.org.uk/media/2465/questions-for-the-breeder-no-credit.jpg?mode=crop&width=800&height=600&rnd=132137840200000000",
+                category = "Hooded jacket",
+                quantity = 1
             ),
-            Product(
-                4,
-                "Product 4",
-                74.42,
-                "https://www.8newsnow.com/wp-content/uploads/sites/59/2022/08/husky_eyes.jpg?w=1988&h=1440",
-                true
+            ProductCart(
+                id = 6,
+                title = "Product 5",
+                price = 95.21,
+                imageUrl = "https://kb.rspca.org.au/wp-content/uploads/2021/07/collie-beach-bokeh.jpg",
+                category = "Hooded jacket",
+                quantity = 1
             ),
-            Product(
-                6,
-                "Product 6",
-                11.11,
-                "https://kb.rspca.org.au/wp-content/uploads/2021/07/collie-beach-bokeh.jpg",
-                true
+            ProductCart(
+                id = 2,
+                title = "Product 5",
+                price = 95.21,
+                imageUrl = "https://i.natgeofe.com/n/87908698-fc7a-4ada-ba21-490521df2511/01-domesticated-dog_square.jpg",
+                category = "Hooded jacket",
+                quantity = 1
             ),
-            Product(
-                8,
-                "Product 8",
-                33.33,
-                "https://petsitterfrederick.com/wp-content/uploads/2021/04/5484d9d1eab8ea3017b17e29.jpeg",
-                true
+            ProductCart(
+                id = 7,
+                title = "Product 5",
+                price = 95.21,
+                imageUrl = "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iyRWcdIqVMks/v0/1200x-1.jpg",
+                category = "Hooded jacket",
+                quantity = 1
             ),
-            Product(
-                10,
-                "Product 10",
-                55.55,
-                "https://www.forbes.com/advisor/wp-content/uploads/2021/03/pit-bull-featured.jpg",
-                true
+            ProductCart(
+                id = 4,
+                title = "Product 5",
+                price = 95.21,
+                imageUrl = "https://www.8newsnow.com/wp-content/uploads/sites/59/2022/08/husky_eyes.jpg?w=1988&h=1440\"",
+                category = "Hooded jacket",
+                quantity = 1
             ),
         )
     }
@@ -361,6 +368,15 @@ object MockUtils {
                 ),
                 isFavourite = true
             ),
+        )
+    }
+
+    fun loadMockProductPrices(): ProductPrices {
+        return ProductPrices(
+            subtotal = 119.97,
+            shipping = 3.99,
+            discount = 23.99,
+            total = 99.97
         )
     }
 }

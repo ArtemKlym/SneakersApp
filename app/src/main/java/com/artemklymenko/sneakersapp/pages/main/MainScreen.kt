@@ -26,7 +26,9 @@ fun MainScreen(
     onNavigateToProduct: (Long) -> Unit,
     onNavigateToNotifications: () -> Unit,
     onNavigateToConfirmation: () -> Unit,
-    onChangeFavourite: (Long) -> Unit
+    onChangeFavourite: (Long) -> Unit,
+    onNavigateToPromoCode: () -> Unit,
+    onNavigateToCheckout: () -> Unit,
 ) {
     val navController = rememberNavController()
     val navGraphs: List<Routes> = listOf(
@@ -73,14 +75,16 @@ fun MainScreen(
         }
     ) {
         NestedAppNavigation(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = it.calculateBottomPadding()),
             navController = navController,
             onNavigateToProduct = onNavigateToProduct,
             onNavigateToNotifications = onNavigateToNotifications,
             onNavigateToConfirmation = onNavigateToConfirmation,
             onChangeFavourite = onChangeFavourite,
+            onNavigateToPromoCode = onNavigateToPromoCode,
+            onNavigateToCheckout = onNavigateToCheckout,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = it.calculateBottomPadding())
         )
     }
 }
