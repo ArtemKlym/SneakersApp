@@ -42,6 +42,8 @@ sealed class Routes(val route: String) {
 
     //MainScreen: third page
     data object Cart: Routes("cart")
+    data object Promo : Routes("cart/promo")
+    data object Checkout : Routes("cart/checkout")
 
     //MainScreen: fourth page
     data object Profile: Routes("profile")
