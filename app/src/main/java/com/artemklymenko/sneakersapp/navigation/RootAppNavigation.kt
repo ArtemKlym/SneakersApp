@@ -14,6 +14,8 @@ import com.artemklymenko.sneakersapp.pages.notifications.NotificationsScreen
 import com.artemklymenko.sneakersapp.pages.notifications.NotificationsViewModel
 import com.artemklymenko.sneakersapp.pages.product.ProductScreen
 import com.artemklymenko.sneakersapp.pages.product.ProductViewModel
+import com.artemklymenko.sneakersapp.pages.promo.PromoScreen
+import com.artemklymenko.sneakersapp.pages.promo.PromoViewModel
 import com.artemklymenko.sneakersapp.pages.sign_in.SignInScreen
 import com.artemklymenko.sneakersapp.pages.sign_in.SignInViewModel
 import com.artemklymenko.sneakersapp.pages.sign_up.SignUpScreen
@@ -170,6 +172,13 @@ fun RootAppNavigation(
             NotificationsScreen(viewModel = viewModel) {
                 navController.popBackStack()
             }
+        }
+
+        composable(Routes.Promo.route) {
+            val viewModel = hiltViewModel<PromoViewModel>()
+            PromoScreen(
+                viewModel = viewModel,
+            )
         }
     }
 }
