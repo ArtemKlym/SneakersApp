@@ -15,8 +15,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -29,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.artemklymenko.sneakersapp.R
@@ -77,19 +81,20 @@ private fun CartScreenContent(
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.weight(0.5f)) {
-            TopBarAsText(title = stringResource(id = R.string.label_cart))
-        }
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(uiState.products) { product ->
-                CartProductItem(
-                    product = product,
-                    uiEvent = uiEvent,
-                    onNavigateToProduct = onNavigateToProduct
-                )
+            TopBarAsText(stringResource(R.string.label_cart))
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(uiState.products) { product ->
+                    CartProductItem(
+                        product = product,
+                        uiEvent = uiEvent,
+                        onNavigateToProduct = onNavigateToProduct,
+                    )
+                }
             }
         }
         Column(
             modifier = Modifier
+                .verticalScroll(rememberScrollState())
                 .weight(0.5f)
                 .padding(vertical = 16.dp),
             verticalArrangement = Arrangement.Bottom,
@@ -97,6 +102,7 @@ private fun CartScreenContent(
         ) {
             Column {
                 LineDivider()
+                PromoTitle(onNavigateToPromoCode)
                 PriceDetailsRow(stringResource(R.string.shipping), uiState.shipping)
                 PriceDetailsRow(stringResource(R.string.subtotal), uiState.subtotal)
                 PriceDetailsRow(stringResource(R.string.shipping), uiState.shipping)
@@ -110,19 +116,20 @@ private fun CartScreenContent(
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     PrimaryButton(
-                        text = stringResource(R.string.checkout),
+                        text = stringResource(id = R.string.checkout),
                         modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp)
                     ) {
                         onNavigateToCheckout()
                     }
                 }
             }
+
         }
     }
 }
 
 @Composable
-fun CartProductItem(
+private fun CartProductItem(
     product: ProductCart,
     uiEvent: (CartUiEvent) -> Unit,
     onNavigateToProduct: (Long) -> Unit
@@ -215,6 +222,31 @@ private fun PriceDetailsRow(title: String, price: Double) {
         )
         ProductPrice(
             price = price
+        )
+    }
+}
+
+@Composable
+private fun PromoTitle(onNavigateToPromoCode: () -> Unit) {
+    Row(horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                onNavigateToPromoCode()
+            }) {
+        Text(
+            text = stringResource(id = R.string.promo_code),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(16.dp)
+        )
+        Image(
+            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            modifier = Modifier.padding(end = 16.dp)
         )
     }
 }
