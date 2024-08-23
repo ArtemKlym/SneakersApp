@@ -4,5 +4,5 @@ data class DeliveryAddress(
     val id: Long,
     val name: String,
     val address: String,
-    val isSelected: String
+    val isSelected: Boolean
 )
