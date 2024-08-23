@@ -1,6 +1,8 @@
 package com.artemklymenko.sneakersapp.utils
 
+import com.artemklymenko.sneakersapp.domain.models.DeliveryAddress
 import com.artemklymenko.sneakersapp.domain.models.Notification
+import com.artemklymenko.sneakersapp.domain.models.PaymentMethod
 import com.artemklymenko.sneakersapp.domain.models.Product
 import com.artemklymenko.sneakersapp.domain.models.ProductCart
 import com.artemklymenko.sneakersapp.domain.models.ProductDetails
@@ -377,6 +379,40 @@ object MockUtils {
             shipping = 3.99,
             discount = 23.99,
             total = 99.97
+        )
+    }
+
+    fun loadMockAddresses(): List<DeliveryAddress> {
+        return listOf(
+            DeliveryAddress(
+                id = 1,
+                name = "Home",
+                address = "Kyiv, Ukraine, 02000",
+                isSelected = true
+            ),
+            DeliveryAddress(
+                id = 2,
+                name = "Work",
+                address = "Lviv, Ukraine, 03559",
+                isSelected = false
+            ),
+        )
+    }
+
+    fun loadMockPaymentMethods(): List<PaymentMethod> {
+        return listOf(
+            PaymentMethod(
+                id = 1,
+                name = "Visa",
+                number = "**** **** **** 1234",
+                isSelected = true
+            ),
+            PaymentMethod(
+                id = 2,
+                name = "MasterCard",
+                number = "**** **** **** 5678",
+                isSelected = false
+            )
         )
     }
 }
