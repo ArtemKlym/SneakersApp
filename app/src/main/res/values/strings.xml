@@ -24,9 +24,10 @@
     <string name="next">Next</string>
     <string name="sign_in">SignIn</string>
     <string name="label_feed">Feed</string>
-    <string name="label_favourites">Favoutires</string>
+    <string name="label_favourites">Favourites</string>
     <string name="label_cart">Cart</string>
     <string name="label_profile">Profile</string>
+    <string name="label_checkout">Checkout</string>
     <string name="pattern_price">$%1$s</string>
     <string name="buy_now">Buy now</string>
     <string name="cart">Cart</string>
@@ -36,4 +37,8 @@
     <string name="shipping">Shipping</string>
     <string name="discount">Discount</string>
     <string name="total">Total</string>
+    <string name="label_delivery_address">Delivery Address</string>
+    <string name="label_payment_methods">Payment Methods</string>
+    <string name="label_my_cart">My Cart</string>
+    <string name="pay_now">Pay now</string>
 </resources>
