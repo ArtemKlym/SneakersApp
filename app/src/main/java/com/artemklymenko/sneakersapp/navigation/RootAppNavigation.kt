@@ -7,6 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.artemklymenko.sneakersapp.pages.checkout.CheckoutScreen
+import com.artemklymenko.sneakersapp.pages.checkout.CheckoutViewModel
 import com.artemklymenko.sneakersapp.pages.confirm.ConfirmScreen
 import com.artemklymenko.sneakersapp.pages.confirm.ConfirmViewModel
 import com.artemklymenko.sneakersapp.pages.main.MainScreen
@@ -179,6 +181,27 @@ fun RootAppNavigation(
             PromoScreen(
                 viewModel = viewModel,
             )
+        }
+
+        composable(Routes.Checkout.route){
+            val viewModel = hiltViewModel<CheckoutViewModel>()
+            CheckoutScreen(
+                viewModel = viewModel,
+                navigateToDeliveryAddresses = {
+                    navController.navigate(Routes.Address.route)
+                },
+                navigateToPaymentMethods = {
+                    navController.navigate(Routes.Billing.route)
+                },
+                navigateToCart = {
+                    navController.navigate(Routes.Cart.route)
+                },
+                navigateToProduct = {
+                    navController.navigate(Routes.Product.getProductById(it))
+                }
+            ) {
+                navController.navigate(Routes.Success.route)
+            }
         }
     }
 }
