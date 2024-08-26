@@ -7,6 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.artemklymenko.sneakersapp.pages.checkout.CheckoutScreen
+import com.artemklymenko.sneakersapp.pages.checkout.CheckoutViewModel
 import com.artemklymenko.sneakersapp.pages.confirm.ConfirmScreen
 import com.artemklymenko.sneakersapp.pages.confirm.ConfirmViewModel
 import com.artemklymenko.sneakersapp.pages.main.MainScreen
@@ -14,6 +16,8 @@ import com.artemklymenko.sneakersapp.pages.notifications.NotificationsScreen
 import com.artemklymenko.sneakersapp.pages.notifications.NotificationsViewModel
 import com.artemklymenko.sneakersapp.pages.product.ProductScreen
 import com.artemklymenko.sneakersapp.pages.product.ProductViewModel
+import com.artemklymenko.sneakersapp.pages.promo.PromoScreen
+import com.artemklymenko.sneakersapp.pages.promo.PromoViewModel
 import com.artemklymenko.sneakersapp.pages.sign_in.SignInScreen
 import com.artemklymenko.sneakersapp.pages.sign_in.SignInViewModel
 import com.artemklymenko.sneakersapp.pages.sign_up.SignUpScreen
@@ -169,6 +173,34 @@ fun RootAppNavigation(
             val viewModel = hiltViewModel<NotificationsViewModel>()
             NotificationsScreen(viewModel = viewModel) {
                 navController.popBackStack()
+            }
+        }
+
+        composable(Routes.Promo.route) {
+            val viewModel = hiltViewModel<PromoViewModel>()
+            PromoScreen(
+                viewModel = viewModel,
+            )
+        }
+
+        composable(Routes.Checkout.route){
+            val viewModel = hiltViewModel<CheckoutViewModel>()
+            CheckoutScreen(
+                viewModel = viewModel,
+                navigateToDeliveryAddresses = {
+                    navController.navigate(Routes.Address.route)
+                },
+                navigateToPaymentMethods = {
+                    navController.navigate(Routes.Billing.route)
+                },
+                navigateToCart = {
+                    navController.navigate(Routes.Cart.route)
+                },
+                navigateToProduct = {
+                    navController.navigate(Routes.Product.getProductById(it))
+                }
+            ) {
+                navController.navigate(Routes.Success.route)
             }
         }
     }
