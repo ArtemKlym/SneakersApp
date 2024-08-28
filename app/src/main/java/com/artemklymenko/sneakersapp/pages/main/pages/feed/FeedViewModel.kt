@@ -23,7 +23,29 @@ class FeedViewModel @Inject constructor(): BaseViewModel<FeedUiState, Progress, 
             is FeedUiEvent.OnProductClick -> {
                 /* no-op */
             }
+            is FeedUiEvent.OnSearchQueryChange -> {
+                onSearchQueryChange(uiEvent.query)
+            }
         }
+    }
+
+    private fun onSearchQueryChange(query: String) {
+        val currentState = uiState.value
+        if (currentState != null) {
+            val filteredProducts = currentState.products.filter {
+                it.title.contains(query, ignoreCase = true)
+            }
+            updateState {
+                it.value = currentState.copy(
+                    searchQuery = query,
+                    filteredProducts = filteredProducts
+                )
+            }
+        }
+    }
+
+    fun onSearch(query: String) {
+        handleUiEvent(FeedUiEvent.OnSearchQueryChange(query))
     }
 
     private fun onFavouriteClick(favouriteId: Long) {
@@ -39,6 +61,7 @@ class FeedViewModel @Inject constructor(): BaseViewModel<FeedUiState, Progress, 
             updateState { currentState ->
                 currentState.value = FeedUiState(
                     products = response.first,
+                    filteredProducts = response.first,
                     searchCategories = response.second
                 )
             }
