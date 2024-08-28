@@ -83,18 +83,7 @@ fun NavGraphBuilder.feedGraph(
             FeedScreen(
                 viewModel = viewModel,
                 onNavigateToNotifications = onNavigateToNotifications,
-                onNavigateToProduct = onNavigateToProduct,
-                onNavigateToSearch = { navController.navigate(Routes.Search.route) }
-            )
-        }
-        composable(Routes.Search.route) {
-            val viewModel = hiltViewModel<SearchViewModel>()
-            SearchScreen(
-                viewModel = viewModel,
-                onNavigateToProduct = onNavigateToProduct,
-                onBackClick = {
-                    navController.popBackStack()
-                }
+                onNavigateToProduct = onNavigateToProduct
             )
         }
     }
