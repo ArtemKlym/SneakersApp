@@ -5,5 +5,7 @@ import com.artemklymenko.sneakersapp.domain.models.Product
 
 data class FeedUiState(
     val products: List<Product> = emptyList(),
-    val searchCategories: List<String> = emptyList()
+    val searchCategories: List<String> = emptyList(),
+    val searchQuery: String = "",
+    val filteredProducts: List<Product> = emptyList()
 ) : UiState
