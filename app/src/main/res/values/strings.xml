@@ -41,4 +41,5 @@
     <string name="label_payment_methods">Payment Methods</string>
     <string name="label_my_cart">My Cart</string>
     <string name="pay_now">Pay now</string>
+    <string name="search">Search</string>
 </resources>
