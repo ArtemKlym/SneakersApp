@@ -8,4 +8,6 @@ sealed class FeedUiEvent : UiEvent {
     data class OnProductClick(val productId: Long) : FeedUiEvent()
 
     data class OnFavouriteClick(val favouriteId: Long) : FeedUiEvent()
+
+    data class OnSearchQueryChange(val query: String) : FeedUiEvent()
 }
