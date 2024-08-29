@@ -7,6 +7,7 @@ import com.artemklymenko.sneakersapp.domain.models.Product
 import com.artemklymenko.sneakersapp.domain.models.ProductCart
 import com.artemklymenko.sneakersapp.domain.models.ProductDetails
 import com.artemklymenko.sneakersapp.domain.models.ProductPrices
+import com.artemklymenko.sneakersapp.domain.models.User
 
 object MockUtils {
 
@@ -415,4 +416,12 @@ object MockUtils {
             )
         )
     }
+
+    fun loadMockUser(): User = User(
+        id = 1,
+        name = "Jack",
+        surname = "London",
+        email = "jack.london@gmail.com",
+        urlImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDzn36DbfZjqNe6vVsjGJidTdAaMbTWqC6ug&s"
+    )
 }

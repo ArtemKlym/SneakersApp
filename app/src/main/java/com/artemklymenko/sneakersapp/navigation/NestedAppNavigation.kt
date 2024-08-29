@@ -24,8 +24,6 @@ import com.artemklymenko.sneakersapp.pages.main.pages.profile.personal.PersonalD
 import com.artemklymenko.sneakersapp.pages.main.pages.profile.personal.PersonalDetailsViewModel
 import com.artemklymenko.sneakersapp.pages.main.pages.profile.settings.SettingsScreen
 import com.artemklymenko.sneakersapp.pages.main.pages.profile.settings.SettingsViewModel
-import com.artemklymenko.sneakersapp.pages.main.pages.search.SearchScreen
-import com.artemklymenko.sneakersapp.pages.main.pages.search.SearchViewModel
 
 @Composable
 fun NestedAppNavigation(
@@ -152,6 +150,9 @@ fun NavGraphBuilder.profileGraph(
                 },
                 onNavigateToBillingDetails = {
                     navController.navigate(Routes.Billing.route)
+                },
+                onNavigateToLogOut = {
+
                 })
         }
 
