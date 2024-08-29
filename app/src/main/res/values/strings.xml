@@ -42,4 +42,10 @@
     <string name="label_my_cart">My Cart</string>
     <string name="pay_now">Pay now</string>
     <string name="search">Search</string>
+    <string name="settings">Settings</string>
+    <string name="log_out">Log out</string>
+    <string name="personal_data_details">Personal data details</string>
+    <string name="billing_details">Billing details</string>
+    <string name="delivery_address_details">Delivery address details</string>
+
 </resources>
