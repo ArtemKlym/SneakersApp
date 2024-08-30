@@ -29,6 +29,7 @@ fun MainScreen(
     onChangeFavourite: (Long) -> Unit,
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
+    onNavigateToSignIn: () -> Unit,
 ) {
     val navController = rememberNavController()
     val navGraphs: List<Routes> = listOf(
@@ -82,6 +83,7 @@ fun MainScreen(
             onChangeFavourite = onChangeFavourite,
             onNavigateToPromoCode = onNavigateToPromoCode,
             onNavigateToCheckout = onNavigateToCheckout,
+            onNavigateToSignIn = onNavigateToSignIn,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(bottom = it.calculateBottomPadding())
