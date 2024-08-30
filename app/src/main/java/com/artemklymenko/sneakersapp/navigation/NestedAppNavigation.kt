@@ -36,6 +36,7 @@ fun NestedAppNavigation(
     onChangeFavourite: (Long) -> Unit,
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
+    onNavigateToSignIn: () -> Unit,
 ) {
     NavHost(
         modifier = modifier,
@@ -63,6 +64,7 @@ fun NestedAppNavigation(
 
         profileGraph(
             navController = navController,
+            onNavigateToSignIn = onNavigateToSignIn
         )
     }
 }
@@ -129,7 +131,8 @@ fun NavGraphBuilder.cartGraph(
 }
 
 fun NavGraphBuilder.profileGraph(
-    navController: NavHostController
+    navController: NavHostController,
+    onNavigateToSignIn: () -> Unit
 ) {
     navigation(
         startDestination = Routes.Profile.route,
@@ -152,7 +155,7 @@ fun NavGraphBuilder.profileGraph(
                     navController.navigate(Routes.Billing.route)
                 },
                 onNavigateToLogOut = {
-
+                    onNavigateToSignIn.invoke()
                 })
         }
 

@@ -132,6 +132,11 @@ fun RootAppNavigation(
                 },
                 onNavigateToCheckout = {
                     navController.navigate(route = Routes.Checkout.route)
+                },
+                onNavigateToSignIn = {
+                    navController.navigate(Routes.SignIn.route){
+                        popUpTo(0)
+                    }
                 }
             )
         }
