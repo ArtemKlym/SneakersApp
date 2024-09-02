@@ -134,14 +134,14 @@ fun RootAppNavigation(
                     navController.navigate(route = Routes.Checkout.route)
                 },
                 onNavigateToSignIn = {
-                    navController.navigate(Routes.SignIn.route){
+                    navController.navigate(Routes.SignIn.route) {
                         popUpTo(0)
                     }
                 }
             )
         }
 
-        composable(Routes.Product.route){
+        composable(Routes.Product.route) {
             val viewModel = hiltViewModel<ProductViewModel>()
             val id = it.arguments?.getString(Routes.PRODUCT_ID)?.toLong() ?: -1L
             ProductScreen(
@@ -156,25 +156,38 @@ fun RootAppNavigation(
             )
         }
 
-        composable(Routes.Confirmation.route){
+        composable(Routes.Confirmation.route) {
             val viewModel = hiltViewModel<ConfirmViewModel>()
             ConfirmScreen(
                 viewModel = viewModel,
                 onNavigateToSuccess = {
-                    navController.navigate(Routes.Success.route)
+                    navController.navigate(Routes.Success.route) {
+                        popUpTo(0)
+                    }
                 }) {
                 navController.popBackStack()
             }
         }
 
-        composable(Routes.Success.route){
+        composable(Routes.Success.route) {
             val viewModel = hiltViewModel<SuccessViewModel>()
-            SuccessScreen(viewModel = viewModel) {
-                navController.navigate(Routes.Main.route)
-            }
+            SuccessScreen(
+                viewModel = viewModel,
+                onBackClick = {
+                    navController.navigate(Routes.Main.route) {
+                        popUpTo(0) {
+                            inclusive = true
+                        }
+                    }
+                },
+                onConfirmationClick = {
+                    navController.navigate(Routes.Main.route){
+                        popUpTo(0)
+                    }
+                })
         }
 
-        composable(Routes.Notifications.route){
+        composable(Routes.Notifications.route) {
             val viewModel = hiltViewModel<NotificationsViewModel>()
             NotificationsScreen(viewModel = viewModel) {
                 navController.popBackStack()
@@ -188,7 +201,7 @@ fun RootAppNavigation(
             )
         }
 
-        composable(Routes.Checkout.route){
+        composable(Routes.Checkout.route) {
             val viewModel = hiltViewModel<CheckoutViewModel>()
             CheckoutScreen(
                 viewModel = viewModel,
@@ -198,14 +211,11 @@ fun RootAppNavigation(
                 navigateToPaymentMethods = {
                     navController.navigate(Routes.Billing.route)
                 },
-                navigateToCart = {
-                    navController.navigate(Routes.Cart.route)
-                },
                 navigateToProduct = {
                     navController.navigate(Routes.Product.getProductById(it))
                 }
             ) {
-                navController.navigate(Routes.Success.route)
+                navController.navigate(Routes.Confirmation.route)
             }
         }
     }
