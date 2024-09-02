@@ -1,5 +1,6 @@
 package com.artemklymenko.sneakersapp.pages.success
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -14,7 +15,8 @@ import com.artemklymenko.sneakersapp.core.components.TopBar
 @Composable
 fun SuccessScreen(
     viewModel: SuccessViewModel,
-    onConfirmationClick: () -> Unit
+    onConfirmationClick: () -> Unit,
+    onBackClick: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -27,6 +29,9 @@ fun SuccessScreen(
             )
         }
     )
+    BackHandler {
+        onBackClick.invoke()
+    }
 }
 
 @Composable

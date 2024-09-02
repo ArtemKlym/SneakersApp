@@ -52,9 +52,8 @@ fun CheckoutScreen(
     viewModel: CheckoutViewModel,
     navigateToDeliveryAddresses: () -> Unit,
     navigateToPaymentMethods: () -> Unit,
-    navigateToCart: () -> Unit,
     navigateToProduct: (Long) -> Unit,
-    navigateToSuccessScreen: () -> Unit
+    navigateToConfirmationScreen: () -> Unit
 ) {
     LaunchedEffect(key1 = Unit) {
         viewModel.handleUiEvent(
@@ -67,10 +66,9 @@ fun CheckoutScreen(
                 uiState = it,
                 uiEvent = viewModel::handleUiEvent,
                 navigateToDeliveryAddresses = navigateToDeliveryAddresses,
-                navigateToCart = navigateToCart,
                 navigateToProduct = navigateToProduct,
                 navigateToPaymentMethods = navigateToPaymentMethods,
-                navigateToSuccessScreen = navigateToSuccessScreen
+                navigateToConfirmationScreen = navigateToConfirmationScreen
             )
         }
     }
@@ -81,10 +79,9 @@ private fun CheckoutScreenContent(
     uiState: CheckoutUiState,
     uiEvent: (CheckoutUiEvent) -> Unit,
     navigateToDeliveryAddresses: () -> Unit,
-    navigateToCart: () -> Unit,
     navigateToProduct: (Long) -> Unit,
     navigateToPaymentMethods: () -> Unit,
-    navigateToSuccessScreen: () -> Unit
+    navigateToConfirmationScreen: () -> Unit
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         TopBarAsText(title = stringResource(id = R.string.label_checkout))
@@ -153,7 +150,7 @@ private fun CheckoutScreenContent(
                     .padding(16.dp)
             ) {
                 PrimaryButton(text = stringResource(id = R.string.pay_now)) {
-                    navigateToSuccessScreen()
+                    navigateToConfirmationScreen()
                 }
             }
         }
@@ -239,8 +236,7 @@ private fun CheckoutScreenContentPreview() {
         uiEvent = {},
         navigateToDeliveryAddresses = {},
         navigateToPaymentMethods = {},
-        navigateToCart = {},
         navigateToProduct = {},
-        navigateToSuccessScreen = {},
+        navigateToConfirmationScreen = {},
     )
 }
