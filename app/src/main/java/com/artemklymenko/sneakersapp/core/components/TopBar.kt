@@ -74,7 +74,7 @@ fun TopBarAsText(title: String) {
 
 @Preview
 @Composable
-fun TopBarWithTitleOnlyPreview() {
+private fun TopBarWithTitleOnlyPreview() {
     TopBar(
         title = "TopBar with title only",
         onBackClick = null,
@@ -85,7 +85,7 @@ fun TopBarWithTitleOnlyPreview() {
 
 @Preview
 @Composable
-fun TopBarWithTitleAndBackButtonPreview() {
+private fun TopBarWithTitleAndBackButtonPreview() {
     TopBar(
         title = "TopBar with title and back button",
         onBackClick = {},
@@ -96,7 +96,7 @@ fun TopBarWithTitleAndBackButtonPreview() {
 
 @Preview
 @Composable
-fun TopBarWithTitleAndMenuPreview() {
+private fun TopBarWithTitleAndMenuPreview() {
     TopBar(
         title = "TopBar with title and menu",
         onBackClick = null,
@@ -107,7 +107,7 @@ fun TopBarWithTitleAndMenuPreview() {
 
 @Preview
 @Composable
-fun TopBarWithTitleAndBackButtonAndMenuPreview() {
+private fun TopBarWithTitleAndBackButtonAndMenuPreview() {
     TopBar(
         title = "TopBar with title, back button, and menu",
         onBackClick = {},
