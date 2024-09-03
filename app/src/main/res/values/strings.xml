@@ -47,5 +47,8 @@
     <string name="personal_data_details">Personal data details</string>
     <string name="billing_details">Billing details</string>
     <string name="delivery_address_details">Delivery address details</string>
+    <string name="order_success">Order Successful</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="order_confirmation">Your package will be sent to your address. Thanks for your order!</string>
 
 </resources>
