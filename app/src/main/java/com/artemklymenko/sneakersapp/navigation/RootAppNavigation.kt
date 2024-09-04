@@ -121,9 +121,6 @@ fun RootAppNavigation(
                 onNavigateToNotifications = {
                     navController.navigate(route = Routes.Notifications.route)
                 },
-                onNavigateToConfirmation = {
-                    navController.navigate(route = Routes.Confirmation.route)
-                },
                 onChangeFavourite = {
                     navController.navigate(route = Routes.Favourites.route)
                 },
@@ -158,15 +155,19 @@ fun RootAppNavigation(
 
         composable(Routes.Confirmation.route) {
             val viewModel = hiltViewModel<ConfirmViewModel>()
+            val paymentId = it.arguments?.getString(Routes.PAYMENT_ID)?.toLong() ?: -1L
+            val addressId = it.arguments?.getString(Routes.ADDRESS_ID)?.toLong() ?: -1L
             ConfirmScreen(
                 viewModel = viewModel,
                 onNavigateToSuccess = {
                     navController.navigate(Routes.Success.route) {
                         popUpTo(0)
                     }
-                }) {
-                navController.popBackStack()
-            }
+                },
+                onBackClick = { navController.popBackStack() },
+                paymentId = paymentId,
+                addressId = addressId
+            )
         }
 
         composable(Routes.Success.route) {
@@ -214,8 +215,8 @@ fun RootAppNavigation(
                 navigateToProduct = {
                     navController.navigate(Routes.Product.getProductById(it))
                 }
-            ) {
-                navController.navigate(Routes.Confirmation.route)
+            ) { paymentId, addressId ->
+                navController.navigate(Routes.Confirmation.getPaymentAndAddressById(paymentId, addressId))
             }
         }
     }

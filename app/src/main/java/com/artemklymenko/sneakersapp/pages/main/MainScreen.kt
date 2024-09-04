@@ -25,7 +25,6 @@ import com.artemklymenko.sneakersapp.navigation.Routes
 fun MainScreen(
     onNavigateToProduct: (Long) -> Unit,
     onNavigateToNotifications: () -> Unit,
-    onNavigateToConfirmation: () -> Unit,
     onChangeFavourite: (Long) -> Unit,
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
@@ -79,7 +78,6 @@ fun MainScreen(
             navController = navController,
             onNavigateToProduct = onNavigateToProduct,
             onNavigateToNotifications = onNavigateToNotifications,
-            onNavigateToConfirmation = onNavigateToConfirmation,
             onChangeFavourite = onChangeFavourite,
             onNavigateToPromoCode = onNavigateToPromoCode,
             onNavigateToCheckout = onNavigateToCheckout,

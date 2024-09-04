@@ -50,7 +50,7 @@ fun CartScreen(
     viewModel: CartViewModel,
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
-    onNavigateToProduct: (Long) -> Unit
+    onNavigateToProduct: (Long) -> Unit,
 ) {
     LaunchedEffect(key1 = Unit) {
         viewModel.handleUiEvent(
@@ -65,7 +65,7 @@ fun CartScreen(
                 uiEvent = viewModel::handleUiEvent,
                 onNavigateToProduct = onNavigateToProduct,
                 onNavigateToPromoCode = onNavigateToPromoCode,
-                onNavigateToCheckout = onNavigateToCheckout
+                onNavigateToCheckout = onNavigateToCheckout,
             )
         }
     }

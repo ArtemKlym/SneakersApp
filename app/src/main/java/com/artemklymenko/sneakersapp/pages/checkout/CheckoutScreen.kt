@@ -21,6 +21,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBalanceWallet
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
@@ -36,6 +37,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.artemklymenko.sneakersapp.R
 import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
+import com.artemklymenko.sneakersapp.core.components.HorizontalProductItem
 import com.artemklymenko.sneakersapp.core.components.NavigationTitle
 import com.artemklymenko.sneakersapp.core.components.PrimaryButton
 import com.artemklymenko.sneakersapp.core.components.ProductCategory
@@ -53,7 +55,7 @@ fun CheckoutScreen(
     navigateToDeliveryAddresses: () -> Unit,
     navigateToPaymentMethods: () -> Unit,
     navigateToProduct: (Long) -> Unit,
-    navigateToConfirmationScreen: () -> Unit
+    navigateToConfirmationScreen: (Long, Long) -> Unit
 ) {
     LaunchedEffect(key1 = Unit) {
         viewModel.handleUiEvent(
@@ -81,7 +83,7 @@ private fun CheckoutScreenContent(
     navigateToDeliveryAddresses: () -> Unit,
     navigateToProduct: (Long) -> Unit,
     navigateToPaymentMethods: () -> Unit,
-    navigateToConfirmationScreen: () -> Unit
+    navigateToConfirmationScreen: (Long, Long) -> Unit
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         TopBarAsText(title = stringResource(id = R.string.label_checkout))
@@ -114,7 +116,7 @@ private fun CheckoutScreenContent(
             LazyColumn(modifier = Modifier.weight(0.25f)) {
                 items(uiState.paymentMethods) { paymentMethod ->
                     CheckoutListItem(
-                        icon = Icons.Default.Home,
+                        icon = Icons.Filled.AccountBalanceWallet,
                         iconSize = 48.dp,
                         title = paymentMethod.name,
                         description = paymentMethod.number,
@@ -150,48 +152,14 @@ private fun CheckoutScreenContent(
                     .padding(16.dp)
             ) {
                 PrimaryButton(text = stringResource(id = R.string.pay_now)) {
-                    navigateToConfirmationScreen()
+                    val selectedPaymentMethod = uiState.paymentMethods.find { it.isSelected }
+                    val selectedAddress = uiState.addresses.find { it.isSelected }
+
+                    if (selectedPaymentMethod != null && selectedAddress != null) {
+                        navigateToConfirmationScreen(selectedPaymentMethod.id, selectedAddress.id)
+                    }
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun HorizontalProductItem(
-    product: ProductCart,
-    onClick: (Long) -> Unit
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .animateContentSize()
-            .wrapContentHeight()
-            .fillMaxWidth()
-            .clickable { onClick(product.id) }
-            .background(
-                color = MaterialTheme.colorScheme.secondaryContainer,
-                shape = RoundedCornerShape(16.dp)
-            )
-            .padding(8.dp)
-
-    ) {
-        Box(
-            modifier = Modifier
-                .size(40.dp)
-                .clip(RoundedCornerShape(16.dp))
-        ){
-            ProductSquareImage(imageUrl = product.imageUrl)
-        }
-        Column(
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .align(Alignment.Top)
-                .size(128.dp, 64.dp)
-                .padding(horizontal = 8.dp)
-        ) {
-            ProductTitle(title = product.title)
-            ProductCategory(category = product.category)
         }
     }
 }
@@ -237,6 +205,6 @@ private fun CheckoutScreenContentPreview() {
         navigateToDeliveryAddresses = {},
         navigateToPaymentMethods = {},
         navigateToProduct = {},
-        navigateToConfirmationScreen = {},
+        navigateToConfirmationScreen = {_,_ ->},
     )
 }
