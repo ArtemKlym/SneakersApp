@@ -32,7 +32,6 @@ fun NestedAppNavigation(
     startDestination: String = Routes.FeedGraph.route,
     onNavigateToProduct: (Long) -> Unit,
     onNavigateToNotifications: () -> Unit,
-    onNavigateToConfirmation: () -> Unit,
     onChangeFavourite: (Long) -> Unit,
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
@@ -59,7 +58,7 @@ fun NestedAppNavigation(
             navController = navController,
             onNavigateToPromoCode = onNavigateToPromoCode,
             onNavigateToCheckout = onNavigateToCheckout,
-            onNavigateToProduct = onNavigateToProduct
+            onNavigateToProduct = onNavigateToProduct,
         )
 
         profileGraph(
