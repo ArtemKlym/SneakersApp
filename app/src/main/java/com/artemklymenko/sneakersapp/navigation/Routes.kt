@@ -4,6 +4,8 @@ sealed class Routes(val route: String) {
 
     companion object {
         const val PRODUCT_ID = "product_id"
+        const val PAYMENT_ID = "payment_id"
+        const val ADDRESS_ID = "address_id"
     }
 
     /**
@@ -43,6 +45,11 @@ sealed class Routes(val route: String) {
     data object Cart: Routes("cart")
     data object Promo : Routes("cart/promo")
     data object Checkout : Routes("cart/checkout")
+    data object Confirmation : Routes("cart/checkout/confirmation/{$PAYMENT_ID}/{$ADDRESS_ID}"){
+        fun getPaymentAndAddressById(paymentId: Long, addressId: Long): String{
+            return "cart/checkout/confirmation/$paymentId/$addressId"
+        }
+    }
 
     //MainScreen: fourth page
     data object Profile: Routes("profile")
@@ -64,6 +71,5 @@ sealed class Routes(val route: String) {
      * Independent single screens
      */
     data object Notifications : Routes("notifications")
-    data object Confirmation : Routes("confirmation")
     data object Success : Routes("success")
 }
