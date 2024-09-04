@@ -50,5 +50,6 @@
     <string name="order_success">Order Successful</string>
     <string name="back_to_home">Back to home</string>
     <string name="order_confirmation">Your package will be sent to your address. Thanks for your order!</string>
-
+    <string name="confirmation">Confirmation</string>
+    <string name="confirm">Confirm</string>
 </resources>
