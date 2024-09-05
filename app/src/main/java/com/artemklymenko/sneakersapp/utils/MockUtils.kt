@@ -18,49 +18,49 @@ object MockUtils {
         return listOf(
             Notification(
                 0,
-                "https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcOTBOIhBGY2JBZKYDcjGelcx-msm7RY0wlQ&s",
                 "You got discount for this week",
                 "We have a good news! You got discount for this week for -10%. To apply this discount use promo code #LEARN_CARDS",
                 false,
             ),
             Notification(
                 1,
-                "https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcOTBOIhBGY2JBZKYDcjGelcx-msm7RY0wlQ&s",
                 "Your password has been changed",
                 "02.11.2022 you sent a request to change your password. Your password was successfully changed, Please let us know if it was not you.",
                 true,
             ),
             Notification(
                 2,
-                "https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcOTBOIhBGY2JBZKYDcjGelcx-msm7RY0wlQ&s",
                 "Meet a new category",
                 "We're pleased to announce that we added a new category \"For party\". Find it out, we're you would love that.",
                 false,
             ),
             Notification(
                 3,
-                "https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcOTBOIhBGY2JBZKYDcjGelcx-msm7RY0wlQ&s",
                 "You got discount for this week",
                 "We have a good news! You got discount for this week for -10%. To apply this discount use promo code #LEARN_CARDS",
                 false,
             ),
             Notification(
                 4,
-                "https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcOTBOIhBGY2JBZKYDcjGelcx-msm7RY0wlQ&s",
                 "Your password has been changed",
                 "02.11.2022 you sent a request to change your password. Your password was successfully changed, Please let us know if it was not you.",
                 true,
             ),
             Notification(
                 5,
-                "https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcOTBOIhBGY2JBZKYDcjGelcx-msm7RY0wlQ&s",
                 "Meet a new category",
                 "We're pleased to announce that we added a new category \"For party\". Find it out, we're you would love that.",
                 false,
             ),
             Notification(
                 6,
-                "https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcOTBOIhBGY2JBZKYDcjGelcx-msm7RY0wlQ&s",
                 "You got discount for this week",
                 "We have a good news! You got discount for this week for -10%. To apply this discount use promo code #LEARN_CARDS",
                 false,
@@ -230,9 +230,9 @@ object MockUtils {
                 category = "Sneakers",
                 price = 22.22,
                 imageUrls = listOf(
-                    "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iyRWcdIqVMks/v0/1200x-1.jpg",
-                    "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iyRWcdIqVMks/v0/1200x-1.jpg",
-                    "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iyRWcdIqVMks/v0/1200x-1.jpg"
+                    "https://as1.ftcdn.net/v2/jpg/02/60/22/68/1000_F_260226888_aZ3EJOTSE2ly5TlRuseWexnVkK67KqBl.jpg",
+                    "https://as1.ftcdn.net/v2/jpg/02/60/22/68/1000_F_260226888_aZ3EJOTSE2ly5TlRuseWexnVkK67KqBl.jpg",
+                    "https://as1.ftcdn.net/v2/jpg/02/60/22/68/1000_F_260226888_aZ3EJOTSE2ly5TlRuseWexnVkK67KqBl.jpg",
                 ),
                 isFavourite = false
             ),
@@ -298,7 +298,7 @@ object MockUtils {
             ),
             ProductCart(
                 id = 6,
-                title = "Product 5",
+                title = "Product 6",
                 price = 95.21,
                 imageUrl = "https://as1.ftcdn.net/v2/jpg/02/60/22/68/1000_F_260226888_aZ3EJOTSE2ly5TlRuseWexnVkK67KqBl.jpg",
                 category = "Sneakers",
@@ -306,17 +306,17 @@ object MockUtils {
             ),
             ProductCart(
                 id = 2,
-                title = "Product 5",
+                title = "Product 2",
                 price = 95.21,
-                imageUrl = "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
+                imageUrl = "https://as1.ftcdn.net/v2/jpg/03/14/89/16/1000_F_314891647_CVY0iUdvxyJ2D6RfP6jNvktTWYdNvy6y.jpg",
                 category = "Sneakers",
                 quantity = 1
             ),
             ProductCart(
                 id = 7,
-                title = "Product 5",
+                title = "Product 7",
                 price = 95.21,
-                imageUrl = "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
+                imageUrl = "https://as1.ftcdn.net/v2/jpg/03/14/89/16/1000_F_314891647_CVY0iUdvxyJ2D6RfP6jNvktTWYdNvy6y.jpg",
                 category = "Sneakers",
                 quantity = 1
             ),
@@ -324,7 +324,7 @@ object MockUtils {
                 id = 4,
                 title = "Product 5",
                 price = 95.21,
-                imageUrl = "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
+                imageUrl = "https://as1.ftcdn.net/v2/jpg/02/64/98/34/1000_F_264983445_wXVAKMmZe0Q1jJN6R6riVJsajb7fGvx3.jpg",
                 category = "Sneakers",
                 quantity = 1
             ),
