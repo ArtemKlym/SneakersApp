@@ -202,7 +202,8 @@ private fun SearchBarView(
                     Image(
                         modifier = Modifier.size(32.dp),
                         painter = rememberAsyncImagePainter(model = product.imageUrl),
-                        contentDescription = null
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop
                     )
                     Text(
                         text = product.title,
@@ -240,7 +241,6 @@ private fun ProductItem(
                 Image(
                     painter = rememberAsyncImagePainter(model = product.imageUrl),
                     contentDescription = null,
-                    alignment = Alignment.TopEnd,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxSize()
