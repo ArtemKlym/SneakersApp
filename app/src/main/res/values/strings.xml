@@ -52,4 +52,6 @@
     <string name="order_confirmation">Your package will be sent to your address. Thanks for your order!</string>
     <string name="confirmation">Confirmation</string>
     <string name="confirm">Confirm</string>
+    <string name="enter_your_promo_code">ENTER YOUR\nPROMO CODE</string>
+    <string name="submit">Submit</string>
 </resources>
