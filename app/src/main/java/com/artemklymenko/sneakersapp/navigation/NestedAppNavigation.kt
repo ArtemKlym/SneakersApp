@@ -30,12 +30,14 @@ fun NestedAppNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController,
     startDestination: String = Routes.FeedGraph.route,
+    isDarkTheme: Boolean,
     onNavigateToProduct: (Long) -> Unit,
     onNavigateToNotifications: () -> Unit,
     onChangeFavourite: (Long) -> Unit,
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
     onNavigateToSignIn: () -> Unit,
+    onThemeChange: () -> Unit
 ) {
     NavHost(
         modifier = modifier,
@@ -63,7 +65,9 @@ fun NestedAppNavigation(
 
         profileGraph(
             navController = navController,
-            onNavigateToSignIn = onNavigateToSignIn
+            onNavigateToSignIn = onNavigateToSignIn,
+            isDarkTheme = isDarkTheme,
+            onThemeChange = onThemeChange
         )
     }
 }
@@ -131,7 +135,9 @@ fun NavGraphBuilder.cartGraph(
 
 fun NavGraphBuilder.profileGraph(
     navController: NavHostController,
-    onNavigateToSignIn: () -> Unit
+    onNavigateToSignIn: () -> Unit,
+    isDarkTheme: Boolean,
+    onThemeChange: () -> Unit
 ) {
     navigation(
         startDestination = Routes.Profile.route,
@@ -160,9 +166,12 @@ fun NavGraphBuilder.profileGraph(
 
         composable(Routes.Settings.route) {
             val viewModel = hiltViewModel<SettingsViewModel>()
-            SettingsScreen(viewModel = viewModel) {
-                navController.popBackStack()
-            }
+            SettingsScreen(
+                viewModel = viewModel,
+                onBackClick = { navController.popBackStack() },
+                isDarkTheme = isDarkTheme,
+                onThemeChange = onThemeChange
+            )
         }
 
         composable(Routes.Personal.route) {

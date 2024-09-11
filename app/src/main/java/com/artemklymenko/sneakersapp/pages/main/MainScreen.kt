@@ -29,6 +29,8 @@ fun MainScreen(
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
     onNavigateToSignIn: () -> Unit,
+    isDarkTheme: Boolean,
+    onThemeChange: () -> Unit
 ) {
     val navController = rememberNavController()
     val navGraphs: List<Routes> = listOf(
@@ -82,6 +84,8 @@ fun MainScreen(
             onNavigateToPromoCode = onNavigateToPromoCode,
             onNavigateToCheckout = onNavigateToCheckout,
             onNavigateToSignIn = onNavigateToSignIn,
+            isDarkTheme = isDarkTheme,
+            onThemeChange = onThemeChange,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(bottom = it.calculateBottomPadding())
