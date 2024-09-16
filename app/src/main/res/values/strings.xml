@@ -72,4 +72,9 @@
     <string name="my_information">My Information</string>
     <string name="name">Name</string>
     <string name="surname">Surname</string>
+    <string name="discover_products">Discover Products</string>
+    <string name="find_your_favourite_sneakers">Find your favourite sneakers.</string>
+    <string name="ease_safe_payment"><![CDATA[Ease & Safe Payment]]></string>
+    <string name="pay_for_the_sneakers_you_buy_safely_easily"><![CDATA[Pay for the sneakers you buy safely & easily.]]></string>
+    <string name="sign_in_or_sign_up">Sign In or Sign Up</string>
 </resources>
