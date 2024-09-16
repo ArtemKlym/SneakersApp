@@ -33,7 +33,7 @@ import com.artemklymenko.sneakersapp.pages.welcome.WelcomeViewModel
 fun RootAppNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Routes.Main.route,
+    startDestination: String = Routes.Splash.route,
     isDarkTheme: Boolean,
     onThemeChange: () -> Unit
 ) {
