@@ -1,4 +1,4 @@
-package com.artemklymenko.sneakersapp.domain.models
+package com.artemklymenko.sneakersapp.domain.models.local
 
 data class ProductDetails(
     val id: Long = -1,

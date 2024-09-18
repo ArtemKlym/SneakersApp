@@ -1,4 +1,4 @@
-package com.artemklymenko.sneakersapp.domain.models
+package com.artemklymenko.sneakersapp.domain.models.local
 
 sealed class QuantityChange {
     data object Increase: QuantityChange()

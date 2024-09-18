@@ -1,9 +1,9 @@
 package com.artemklymenko.sneakersapp.pages.checkout
 
 import com.artemklymenko.sneakersapp.core.base.common.state.UiState
-import com.artemklymenko.sneakersapp.domain.models.DeliveryAddress
-import com.artemklymenko.sneakersapp.domain.models.PaymentMethod
-import com.artemklymenko.sneakersapp.domain.models.ProductCart
+import com.artemklymenko.sneakersapp.domain.models.local.DeliveryAddress
+import com.artemklymenko.sneakersapp.domain.models.local.PaymentMethod
+import com.artemklymenko.sneakersapp.domain.models.local.ProductCart
 
 data class CheckoutUiState (
     val addresses: List<DeliveryAddress>,

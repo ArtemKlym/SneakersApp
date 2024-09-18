@@ -38,9 +38,9 @@ import com.artemklymenko.sneakersapp.core.components.ProductDescription
 import com.artemklymenko.sneakersapp.core.components.ProductImage
 import com.artemklymenko.sneakersapp.core.components.ProductTitle
 import com.artemklymenko.sneakersapp.core.components.TopBarAsText
-import com.artemklymenko.sneakersapp.domain.models.DeliveryAddress
-import com.artemklymenko.sneakersapp.domain.models.PaymentMethod
-import com.artemklymenko.sneakersapp.domain.models.ProductCart
+import com.artemklymenko.sneakersapp.domain.models.local.DeliveryAddress
+import com.artemklymenko.sneakersapp.domain.models.local.PaymentMethod
+import com.artemklymenko.sneakersapp.domain.models.local.ProductCart
 import com.artemklymenko.sneakersapp.utils.MockUtils
 
 @Composable

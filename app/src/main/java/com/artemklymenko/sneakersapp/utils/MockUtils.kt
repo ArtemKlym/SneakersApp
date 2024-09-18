@@ -1,13 +1,13 @@
 package com.artemklymenko.sneakersapp.utils
 
-import com.artemklymenko.sneakersapp.domain.models.DeliveryAddress
-import com.artemklymenko.sneakersapp.domain.models.Notification
-import com.artemklymenko.sneakersapp.domain.models.PaymentMethod
-import com.artemklymenko.sneakersapp.domain.models.Product
-import com.artemklymenko.sneakersapp.domain.models.ProductCart
-import com.artemklymenko.sneakersapp.domain.models.ProductDetails
-import com.artemklymenko.sneakersapp.domain.models.ProductPrices
-import com.artemklymenko.sneakersapp.domain.models.User
+import com.artemklymenko.sneakersapp.domain.models.local.DeliveryAddress
+import com.artemklymenko.sneakersapp.domain.models.local.Notification
+import com.artemklymenko.sneakersapp.domain.models.local.PaymentMethod
+import com.artemklymenko.sneakersapp.domain.models.local.Product
+import com.artemklymenko.sneakersapp.domain.models.local.ProductCart
+import com.artemklymenko.sneakersapp.domain.models.local.ProductDetails
+import com.artemklymenko.sneakersapp.domain.models.local.ProductPrices
+import com.artemklymenko.sneakersapp.domain.models.local.User
 
 object MockUtils {
 

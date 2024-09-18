@@ -43,7 +43,7 @@ import com.artemklymenko.sneakersapp.core.components.ProductPrice
 import com.artemklymenko.sneakersapp.core.components.ProductSquareImage
 import com.artemklymenko.sneakersapp.core.components.ProductTitle
 import com.artemklymenko.sneakersapp.core.components.TopBarAsText
-import com.artemklymenko.sneakersapp.domain.models.ProductCart
+import com.artemklymenko.sneakersapp.domain.models.local.ProductCart
 
 @Composable
 fun CartScreen(
