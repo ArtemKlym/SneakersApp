@@ -54,8 +54,7 @@ import com.artemklymenko.sneakersapp.R
 import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
 import com.artemklymenko.sneakersapp.core.components.SearchCategories
 import com.artemklymenko.sneakersapp.core.components.TopBarAsText
-import com.artemklymenko.sneakersapp.domain.models.Product
-import com.artemklymenko.sneakersapp.utils.MockUtils
+import com.artemklymenko.sneakersapp.domain.models.network.Product
 
 @Composable
 fun FeedScreen(
@@ -201,7 +200,7 @@ private fun SearchBarView(
                 ) {
                     Image(
                         modifier = Modifier.size(32.dp),
-                        painter = rememberAsyncImagePainter(model = product.imageUrl),
+                        painter = rememberAsyncImagePainter(model = product.images[0]),
                         contentDescription = null,
                         contentScale = ContentScale.Crop
                     )
@@ -210,7 +209,7 @@ private fun SearchBarView(
                         modifier = Modifier
                             .padding(horizontal = 8.dp, vertical = 4.dp)
                             .clickable {
-                                onNavigateToProduct(product.id)
+                                onNavigateToProduct(product.id.toLong())
                             }
                     )
                 }
@@ -224,14 +223,14 @@ private fun ProductItem(
     product: Product,
     onNavigateToProduct: (Long) -> Unit
 ) {
-    var isFavourite by remember { mutableStateOf(product.isFavourite) }
+    var isFavourite by remember { mutableStateOf(false) }
     Column {
         Card(
             shape = MaterialTheme.shapes.medium,
             elevation = CardDefaults.elevatedCardElevation(4.dp),
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { onNavigateToProduct.invoke(product.id) }
+                .clickable { onNavigateToProduct.invoke(product.id.toLong()) }
         ) {
             Box(
                 modifier = Modifier
@@ -239,7 +238,7 @@ private fun ProductItem(
                     .height(180.dp)
             ) {
                 Image(
-                    painter = rememberAsyncImagePainter(model = product.imageUrl),
+                    painter = rememberAsyncImagePainter(model = product.images[0]),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -295,12 +294,12 @@ private fun ProductItemTitle(title: String) {
 @Preview(showSystemUi = true)
 @Composable
 private fun FeedScreenPreview() {
-    FeedScreenContent(
-        uiState = FeedUiState(),
-        products = MockUtils.loadMockProducts(),
-        searchCategories = MockUtils.loadMockSearchCategories(),
-        onNavigateToProduct = {},
-        onNavigateToNotifications = {},
-        viewModel = FeedViewModel()
-    )
+//    FeedScreenContent(
+//        uiState = FeedUiState(),
+//        products = MockUtils.loadMockProducts(),
+//        searchCategories = MockUtils.loadMockSearchCategories(),
+//        onNavigateToProduct = {},
+//        onNavigateToNotifications = {},
+//        viewModel = FeedViewModel()
+//    )
 }
