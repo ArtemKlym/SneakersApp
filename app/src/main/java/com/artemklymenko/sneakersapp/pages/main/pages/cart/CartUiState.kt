@@ -1,7 +1,7 @@
 package com.artemklymenko.sneakersapp.pages.main.pages.cart
 
 import com.artemklymenko.sneakersapp.core.base.common.state.UiState
-import com.artemklymenko.sneakersapp.domain.models.ProductCart
+import com.artemklymenko.sneakersapp.domain.models.local.ProductCart
 
 data class CartUiState(
     val products: List<ProductCart> = emptyList(),

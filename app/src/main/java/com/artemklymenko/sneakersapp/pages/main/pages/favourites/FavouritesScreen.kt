@@ -32,7 +32,7 @@ import com.artemklymenko.sneakersapp.core.components.ProductImage
 import com.artemklymenko.sneakersapp.core.components.ProductPrice
 import com.artemklymenko.sneakersapp.core.components.ProductTitle
 import com.artemklymenko.sneakersapp.core.components.TopBarAsText
-import com.artemklymenko.sneakersapp.domain.models.ProductDetails
+import com.artemklymenko.sneakersapp.domain.models.local.ProductDetails
 import com.artemklymenko.sneakersapp.utils.MockUtils
 
 @Composable

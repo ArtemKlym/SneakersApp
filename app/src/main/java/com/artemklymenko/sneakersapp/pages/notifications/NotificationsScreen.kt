@@ -38,7 +38,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.artemklymenko.sneakersapp.R
 import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
 import com.artemklymenko.sneakersapp.core.components.TopBar
-import com.artemklymenko.sneakersapp.domain.models.Notification
+import com.artemklymenko.sneakersapp.domain.models.local.Notification
 import com.artemklymenko.sneakersapp.utils.MockUtils
 
 @Composable

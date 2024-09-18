@@ -54,7 +54,7 @@ import com.artemklymenko.sneakersapp.R
 import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
 import com.artemklymenko.sneakersapp.core.components.PrimaryButton
 import com.artemklymenko.sneakersapp.core.components.RoundedButton
-import com.artemklymenko.sneakersapp.domain.models.ProductDetails
+import com.artemklymenko.sneakersapp.domain.models.local.ProductDetails
 import com.artemklymenko.sneakersapp.utils.MockUtils
 import kotlinx.coroutines.CoroutineScope
 

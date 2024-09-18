@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.artemklymenko.sneakersapp.R
 import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
 import com.artemklymenko.sneakersapp.core.components.TopBarAsText
-import com.artemklymenko.sneakersapp.domain.models.User
+import com.artemklymenko.sneakersapp.domain.models.local.User
 
 @Composable
 fun PersonalDetailsScreen(

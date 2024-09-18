@@ -38,7 +38,7 @@ import com.artemklymenko.sneakersapp.core.components.ProductDescription
 import com.artemklymenko.sneakersapp.core.components.ProductTitle
 import com.artemklymenko.sneakersapp.core.components.ThreeDotMenu
 import com.artemklymenko.sneakersapp.core.components.TopBarAsText
-import com.artemklymenko.sneakersapp.domain.models.DeliveryAddress
+import com.artemklymenko.sneakersapp.domain.models.local.DeliveryAddress
 import com.artemklymenko.sneakersapp.utils.MockUtils
 
 @Composable
