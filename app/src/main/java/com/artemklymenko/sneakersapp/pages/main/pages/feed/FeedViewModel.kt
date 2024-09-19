@@ -31,6 +31,7 @@ class FeedViewModel @Inject constructor(
             is FeedUiEvent.OnSearchQueryChange -> {
                 onSearchQueryChange(uiEvent.query)
             }
+            is FeedUiEvent.SortProducts -> sortProducts(uiEvent.tag)
         }
     }
 
@@ -87,5 +88,18 @@ class FeedViewModel @Inject constructor(
 //                )
 //            }
 //        }
+    }
+
+    private fun sortProducts(tag: String) {
+        val currentState = uiState.value ?: return
+        val sortedProducts = when (tag) {
+            "Top" -> currentState.products.sortedByDescending { it.rating }
+            "Price" -> currentState.products.sortedBy { it.price }
+            "New" -> currentState.products.sortedByDescending { it.meta.createdAt }
+            else -> currentState.products
+        }
+        updateState { presentState ->
+            presentState.value = presentState.value!!.copy(filteredProducts = sortedProducts)
+        }
     }
 }

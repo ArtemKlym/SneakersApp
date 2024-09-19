@@ -26,7 +26,8 @@ import com.artemklymenko.sneakersapp.utils.MockUtils
 @Composable
 fun SearchCategories(
     tags: List<String>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onTagSelected: (String) -> Unit
 ) {
     var selectedCategory by remember { mutableStateOf(tags.first()) }
 
@@ -34,11 +35,14 @@ fun SearchCategories(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(tags){ tag ->
+        items(tags) { tag ->
             SearchTag(
                 tag = tag,
                 isSelected = tag == selectedCategory,
-                onClick = { selectedCategory = tag }
+                onClick = {
+                    selectedCategory = tag
+                    onTagSelected(tag)
+                }
             )
         }
     }
@@ -63,7 +67,7 @@ private fun SearchTag(
         Text(
             text = tag,
             textAlign = TextAlign.Center,
-            color = if (isSelected) MaterialTheme.colorScheme.background
+            color = if (isSelected) MaterialTheme.colorScheme.onPrimary
             else MaterialTheme.colorScheme.onSecondaryContainer,
             modifier = Modifier.width(48.dp)
         )
@@ -73,5 +77,7 @@ private fun SearchTag(
 @Preview
 @Composable
 private fun SearchCategoriesPreview() {
-    SearchCategories(tags = MockUtils.loadMockSearchCategories())
+    SearchCategories(tags = MockUtils.loadMockSearchCategories(), onTagSelected = { _ ->
+
+    })
 }
