@@ -60,7 +60,7 @@ import com.artemklymenko.sneakersapp.domain.models.network.Product
 fun FeedScreen(
     viewModel: FeedViewModel,
     onNavigateToNotifications: () -> Unit,
-    onNavigateToProduct: (Long) -> Unit
+    onNavigateToProduct: (Int) -> Unit
 ) {
     LaunchedEffect(key1 = Unit) {
         viewModel.handleUiEvent(
@@ -74,7 +74,6 @@ fun FeedScreen(
         uiState?.let { state ->
             FeedScreenContent(
                 uiState = state,
-                products = state.products,
                 searchCategories = state.searchCategories,
                 onNavigateToProduct = onNavigateToProduct,
                 onNavigateToNotifications = onNavigateToNotifications,
@@ -86,9 +85,8 @@ fun FeedScreen(
 
 @Composable
 private fun FeedScreenContent(
-    products: List<Product>,
     searchCategories: List<String>,
-    onNavigateToProduct: (Long) -> Unit,
+    onNavigateToProduct: (Int) -> Unit,
     onNavigateToNotifications: () -> Unit,
     uiState: FeedUiState,
     viewModel: FeedViewModel
@@ -104,22 +102,27 @@ private fun FeedScreenContent(
             SearchBarView(uiState, viewModel, onNavigateToProduct)
             NotificationImageButton(onNavigateToNotifications)
         }
-        SearchCategories(
-            tags = searchCategories,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-        )
-        LazyVerticalGrid(
-            modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp, top = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            columns = GridCells.Fixed(2)
-        ) {
-            items(products.size) { index ->
-                ProductItem(
-                    product = products[index],
-                    onNavigateToProduct = onNavigateToProduct
-                )
+        uiState.let { state ->
+            SearchCategories(
+                tags = searchCategories,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                onTagSelected = { selectedTag ->
+                    viewModel.handleUiEvent(FeedUiEvent.SortProducts(selectedTag))
+                }
+            )
+            LazyVerticalGrid(
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp, top = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                columns = GridCells.Fixed(2)
+            ) {
+                items(state.filteredProducts.size) { index ->
+                    ProductItem(
+                        product = state.filteredProducts[index],
+                        onNavigateToProduct = onNavigateToProduct
+                    )
+                }
             }
         }
     }
@@ -151,7 +154,7 @@ private fun NotificationImageButton(onNavigateToNotifications: () -> Unit) {
 private fun SearchBarView(
     uiState: FeedUiState,
     viewModel: FeedViewModel,
-    onNavigateToProduct: (Long) -> Unit
+    onNavigateToProduct: (Int) -> Unit
 ) {
     var active by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
@@ -209,7 +212,7 @@ private fun SearchBarView(
                         modifier = Modifier
                             .padding(horizontal = 8.dp, vertical = 4.dp)
                             .clickable {
-                                onNavigateToProduct(product.id.toLong())
+                                onNavigateToProduct(product.id)
                             }
                     )
                 }
@@ -221,7 +224,7 @@ private fun SearchBarView(
 @Composable
 private fun ProductItem(
     product: Product,
-    onNavigateToProduct: (Long) -> Unit
+    onNavigateToProduct: (Int) -> Unit
 ) {
     var isFavourite by remember { mutableStateOf(false) }
     Column {
@@ -230,7 +233,7 @@ private fun ProductItem(
             elevation = CardDefaults.elevatedCardElevation(4.dp),
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { onNavigateToProduct.invoke(product.id.toLong()) }
+                .clickable { onNavigateToProduct.invoke(product.id) }
         ) {
             Box(
                 modifier = Modifier

@@ -10,4 +10,6 @@ sealed class FeedUiEvent : UiEvent {
     data class OnFavouriteClick(val favouriteId: Long) : FeedUiEvent()
 
     data class OnSearchQueryChange(val query: String) : FeedUiEvent()
+
+    data class SortProducts(val tag: String) : FeedUiEvent()
 }

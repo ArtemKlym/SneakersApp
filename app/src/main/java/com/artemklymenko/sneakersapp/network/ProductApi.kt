@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ProductApi {
-    @GET("products/category/mens-shoes/product/{id}")
+    @GET("product/{id}")
     suspend fun fetchShoes(@Path("id") id: Int): Product
 
     @GET("products/category/mens-shoes")
