@@ -29,8 +29,8 @@ import com.artemklymenko.sneakersapp.R
 @Composable
 fun ProductImage(
     url: String,
-    id: Long,
-    onNavigateToProduct: (Long) -> Unit
+    id: Int,
+    onNavigateToProduct: (Int) -> Unit
 ) {
     Image(
         modifier = Modifier

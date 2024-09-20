@@ -33,7 +33,7 @@ import com.artemklymenko.sneakersapp.pages.welcome.WelcomeViewModel
 fun RootAppNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Routes.Splash.route,
+    startDestination: String = Routes.Main.route,
     isDarkTheme: Boolean,
     onThemeChange: () -> Unit
 ) {
@@ -144,7 +144,7 @@ fun RootAppNavigation(
 
         composable(Routes.Product.route) {
             val viewModel = hiltViewModel<ProductViewModel>()
-            val id = it.arguments?.getString(Routes.PRODUCT_ID)?.toLong() ?: -1L
+            val id = it.arguments?.getString(Routes.PRODUCT_ID)?.toInt() ?: -1
             ProductScreen(
                 viewModel = viewModel,
                 id = id,

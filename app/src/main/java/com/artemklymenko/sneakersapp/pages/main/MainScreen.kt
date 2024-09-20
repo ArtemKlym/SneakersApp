@@ -23,7 +23,7 @@ import com.artemklymenko.sneakersapp.navigation.Routes
 
 @Composable
 fun MainScreen(
-    onNavigateToProduct: (Long) -> Unit,
+    onNavigateToProduct: (Int) -> Unit,
     onNavigateToNotifications: () -> Unit,
     onChangeFavourite: (Long) -> Unit,
     onNavigateToPromoCode: () -> Unit,

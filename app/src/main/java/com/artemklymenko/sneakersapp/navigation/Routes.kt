@@ -33,7 +33,7 @@ sealed class Routes(val route: String) {
      */
     data object Feed : Routes("feed")
     data object Product : Routes("feed/{$PRODUCT_ID}") {
-        fun getProductById(id: Long): String {
+        fun getProductById(id: Int): String {
             return "feed/$id"
         }
     }
