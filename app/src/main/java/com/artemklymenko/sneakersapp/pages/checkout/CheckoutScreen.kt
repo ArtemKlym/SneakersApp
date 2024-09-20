@@ -42,7 +42,7 @@ fun CheckoutScreen(
     viewModel: CheckoutViewModel,
     navigateToDeliveryAddresses: () -> Unit,
     navigateToPaymentMethods: () -> Unit,
-    navigateToProduct: (Long) -> Unit,
+    navigateToProduct: (Int) -> Unit,
     navigateToConfirmationScreen: (Long, Long) -> Unit
 ) {
     LaunchedEffect(key1 = Unit) {
@@ -69,7 +69,7 @@ private fun CheckoutScreenContent(
     uiState: CheckoutUiState,
     uiEvent: (CheckoutUiEvent) -> Unit,
     navigateToDeliveryAddresses: () -> Unit,
-    navigateToProduct: (Long) -> Unit,
+    navigateToProduct: (Int) -> Unit,
     navigateToPaymentMethods: () -> Unit,
     navigateToConfirmationScreen: (Long, Long) -> Unit
 ) {
@@ -128,7 +128,7 @@ private fun CheckoutScreenContent(
                     HorizontalProductItem(
                         product = product
                     ) {
-                        navigateToProduct(product.id)
+                        navigateToProduct(1)//TODO("fix navigate to Product")
                     }
                 }
 

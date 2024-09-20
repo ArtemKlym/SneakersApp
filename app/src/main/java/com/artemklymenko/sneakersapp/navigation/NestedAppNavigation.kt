@@ -31,7 +31,7 @@ fun NestedAppNavigation(
     navController: NavHostController,
     startDestination: String = Routes.FeedGraph.route,
     isDarkTheme: Boolean,
-    onNavigateToProduct: (Long) -> Unit,
+    onNavigateToProduct: (Int) -> Unit,
     onNavigateToNotifications: () -> Unit,
     onChangeFavourite: (Long) -> Unit,
     onNavigateToPromoCode: () -> Unit,
@@ -75,7 +75,7 @@ fun NestedAppNavigation(
 fun NavGraphBuilder.feedGraph(
     navController: NavHostController,
     onNavigateToNotifications: () -> Unit,
-    onNavigateToProduct: (Long) -> Unit
+    onNavigateToProduct: (Int) -> Unit
 ) {
     navigation(
         startDestination = Routes.Feed.route,
@@ -94,7 +94,7 @@ fun NavGraphBuilder.feedGraph(
 
 fun NavGraphBuilder.favouritesGraph(
     navController: NavHostController,
-    onNavigateToProduct: (Long) -> Unit,
+    onNavigateToProduct: (Int) -> Unit,
     onChangeFavourite: (Long) -> Unit
 ) {
     navigation(
@@ -115,7 +115,7 @@ fun NavGraphBuilder.cartGraph(
     navController: NavHostController,
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
-    onNavigateToProduct: (Long) -> Unit,
+    onNavigateToProduct: (Int) -> Unit,
 ) {
     navigation(
         startDestination = Routes.Cart.route,

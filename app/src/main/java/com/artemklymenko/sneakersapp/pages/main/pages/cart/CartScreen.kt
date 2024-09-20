@@ -50,7 +50,7 @@ fun CartScreen(
     viewModel: CartViewModel,
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
-    onNavigateToProduct: (Long) -> Unit,
+    onNavigateToProduct: (Int) -> Unit,
 ) {
     LaunchedEffect(key1 = Unit) {
         viewModel.handleUiEvent(
@@ -77,7 +77,7 @@ private fun CartScreenContent(
     uiEvent: (CartUiEvent) -> Unit,
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
-    onNavigateToProduct: (Long) -> Unit,
+    onNavigateToProduct: (Int) -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.weight(0.5f)) {
@@ -132,7 +132,7 @@ private fun CartScreenContent(
 private fun CartProductItem(
     product: ProductCart,
     uiEvent: (CartUiEvent) -> Unit,
-    onNavigateToProduct: (Long) -> Unit
+    onNavigateToProduct: (Int) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -145,7 +145,7 @@ private fun CartProductItem(
                     .size(80.dp)
                     .padding(8.dp)
                     .clip(RoundedCornerShape(12.dp))
-                    .clickable { onNavigateToProduct.invoke(product.id) },
+                    .clickable { onNavigateToProduct.invoke(product.id.toInt()) },
                 contentAlignment = Alignment.Center
             ) {
                 ProductSquareImage(imageUrl = product.imageUrl)

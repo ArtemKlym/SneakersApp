@@ -38,7 +38,7 @@ import com.artemklymenko.sneakersapp.utils.MockUtils
 @Composable
 fun FavouritesScreen(
     viewModel: FavouritesViewModel,
-    onNavigateToProduct: (Long) -> Unit
+    onNavigateToProduct: (Int) -> Unit
 ) {
     LaunchedEffect(key1 = Unit) {
         viewModel.handleUiEvent(
@@ -60,7 +60,7 @@ fun FavouritesScreen(
 private fun FavouritesScreenContent(
     products: List<ProductDetails>,
     event: (FavouritesUiEvent) -> Unit,
-    onNavigateToProduct: (Long) -> Unit,
+    onNavigateToProduct: (Int) -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         TopBarAsText(title = stringResource(id = R.string.label_favourites))
@@ -80,10 +80,10 @@ private fun FavouritesScreenContent(
 }
 
 @Composable
-fun ProductFavouriteCard(
+private fun ProductFavouriteCard(
     product: ProductDetails,
     event: (FavouritesUiEvent) -> Unit,
-    onNavigateToProduct: (Long) -> Unit
+    onNavigateToProduct: (Int) -> Unit
 ) {
     Card(
         modifier = Modifier.padding(horizontal = 16.dp),
@@ -95,7 +95,7 @@ fun ProductFavouriteCard(
         ) {
             ProductImage(
                 url = product.imageUrls.first(),
-                id = product.id,
+                id = product.id.toInt(),
                 onNavigateToProduct = onNavigateToProduct
             )
 
