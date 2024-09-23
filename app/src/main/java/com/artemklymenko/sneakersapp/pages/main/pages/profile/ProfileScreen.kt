@@ -208,10 +208,10 @@ private fun ProfileItem(icon: ImageVector, title: String, onClick: () -> Unit) {
 @Composable
 fun ProfileScreenContentPreview() {
     ProfileScreenContent(
-        onNavigateToSettings = { /*TODO*/ },
-        onNavigateToPersonalDetails = { /*TODO*/ },
-        onNavigateToDeliveryAddress = { /*TODO*/ },
-        onNavigateToBillingDetails = { /*TODO*/ },
+        onNavigateToSettings = {  },
+        onNavigateToPersonalDetails = {  },
+        onNavigateToDeliveryAddress = {  },
+        onNavigateToBillingDetails = {  },
         user = ProfileUiState(
             id = 1,
             name = "Jack",

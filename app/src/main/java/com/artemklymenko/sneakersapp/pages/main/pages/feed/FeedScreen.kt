@@ -54,7 +54,7 @@ import com.artemklymenko.sneakersapp.R
 import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
 import com.artemklymenko.sneakersapp.core.components.SearchCategories
 import com.artemklymenko.sneakersapp.core.components.TopBarAsText
-import com.artemklymenko.sneakersapp.domain.models.network.Product
+import com.artemklymenko.sneakersapp.domain.models.network.product.Product
 
 @Composable
 fun FeedScreen(

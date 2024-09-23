@@ -1,4 +1,4 @@
-package com.artemklymenko.sneakersapp.domain.models.network
+package com.artemklymenko.sneakersapp.domain.models.network.product
 
 data class Dimensions(
     val width: Double,

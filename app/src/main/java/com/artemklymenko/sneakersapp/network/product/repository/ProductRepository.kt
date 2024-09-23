@@ -1,8 +1,8 @@
-package com.artemklymenko.sneakersapp.network.repository
+package com.artemklymenko.sneakersapp.network.product.repository
 
-import com.artemklymenko.sneakersapp.domain.models.network.Product
-import com.artemklymenko.sneakersapp.network.ProductApi
-import com.artemklymenko.sneakersapp.domain.models.network.Products
+import com.artemklymenko.sneakersapp.domain.models.network.product.Product
+import com.artemklymenko.sneakersapp.network.product.ProductApi
+import com.artemklymenko.sneakersapp.domain.models.network.product.Products
 import javax.inject.Inject
 
 class ProductRepository @Inject constructor(

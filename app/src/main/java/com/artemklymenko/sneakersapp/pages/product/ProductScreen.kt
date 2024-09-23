@@ -64,10 +64,10 @@ import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
 import com.artemklymenko.sneakersapp.core.components.PrimaryButton
 import com.artemklymenko.sneakersapp.core.components.RatingBar
 import com.artemklymenko.sneakersapp.core.components.RoundedButton
-import com.artemklymenko.sneakersapp.domain.models.network.Dimensions
-import com.artemklymenko.sneakersapp.domain.models.network.Meta
-import com.artemklymenko.sneakersapp.domain.models.network.Product
-import com.artemklymenko.sneakersapp.domain.models.network.Review
+import com.artemklymenko.sneakersapp.domain.models.network.product.Dimensions
+import com.artemklymenko.sneakersapp.domain.models.network.product.Meta
+import com.artemklymenko.sneakersapp.domain.models.network.product.Product
+import com.artemklymenko.sneakersapp.domain.models.network.product.Review
 import com.artemklymenko.sneakersapp.utils.getTimeAgo
 
 @Composable
