@@ -7,7 +7,7 @@ import com.artemklymenko.sneakersapp.core.base.common.events.CallBack
 import com.artemklymenko.sneakersapp.core.base.common.events.Dialog
 import com.artemklymenko.sneakersapp.core.base.common.events.Progress
 import com.artemklymenko.sneakersapp.core.base.common.events.UiEvent
-import com.artemklymenko.sneakersapp.network.repository.ProductRepository
+import com.artemklymenko.sneakersapp.network.product.repository.ProductRepository
 import com.artemklymenko.sneakersapp.utils.MockUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

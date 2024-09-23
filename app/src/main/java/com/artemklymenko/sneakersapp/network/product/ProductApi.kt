@@ -1,7 +1,7 @@
-package com.artemklymenko.sneakersapp.network
+package com.artemklymenko.sneakersapp.network.product
 
-import com.artemklymenko.sneakersapp.domain.models.network.Product
-import com.artemklymenko.sneakersapp.domain.models.network.Products
+import com.artemklymenko.sneakersapp.domain.models.network.product.Product
+import com.artemklymenko.sneakersapp.domain.models.network.product.Products
 import retrofit2.http.GET
 import retrofit2.http.Path
 
