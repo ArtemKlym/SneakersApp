@@ -1,6 +1,7 @@
 package com.artemklymenko.sneakersapp.pages.sign_in
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,8 +16,10 @@ import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -24,6 +27,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,11 +44,13 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.artemklymenko.sneakersapp.R
+import com.artemklymenko.sneakersapp.domain.models.network.auth.User
 import com.artemklymenko.sneakersapp.utils.appToastShow
 import com.artemklymenko.sneakersapp.widgets.BackIconButton
 import com.artemklymenko.sneakersapp.widgets.ButtonPrimary
@@ -56,20 +62,25 @@ fun SignInScreen(
     viewModel: SignInViewModel,
     onBackClick: () -> Unit,
     onForgotPasswordClick: () -> Unit,
-    onLoginClick: () -> Unit,
+    onLoginClick: (User) -> Unit,
     onLoginGoogleClick: () -> Unit,
     onRegisterClick: () -> Unit
 ) {
+    val uiState by viewModel.uiState
+    LaunchedEffect(uiState?.user) {
+        uiState?.user?.let {
+            onLoginClick(it)
+        }
+    }
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
             .navigationBarsPadding()
     ) {
         SignInScreenContent(
-            viewModel = viewModel,
+            onEvent = viewModel::handleUiEvent,
             onBackClick = onBackClick,
             onForgotPasswordClick = onForgotPasswordClick,
-            onLoginClick = onLoginClick,
             onLoginGoogleClick = onLoginGoogleClick,
             onRegisterClick = onRegisterClick,
             modifier = Modifier.padding(it)
@@ -77,28 +88,14 @@ fun SignInScreen(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewContent() {
-    SignInScreen(
-        viewModel = SignInViewModel(),
-        onBackClick = { /*TODO*/ },
-        onForgotPasswordClick = { /*TODO*/ },
-        onLoginClick = { /*TODO*/ },
-        onLoginGoogleClick = { /*TODO*/ }) {
-
-    }
-}
-
 @Composable
 private fun SignInScreenContent(
     modifier: Modifier,
-    viewModel: SignInViewModel,
+    onEvent: (SignInUiEvent) -> Unit,
     onBackClick: () -> Unit,
     onForgotPasswordClick: () -> Unit,
-    onLoginClick: () -> Unit,
     onLoginGoogleClick: () -> Unit,
-    onRegisterClick: () -> Unit
+    onRegisterClick: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -106,8 +103,9 @@ private fun SignInScreenContent(
             .padding(16.dp)
     ) {
         val context = LocalContext.current
-        var login by remember { mutableStateOf("") }
+        var username by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
+        var passwordVisible by remember { mutableStateOf(false) }
 
         Box {
             BackIconButton(onClick = onBackClick)
@@ -128,18 +126,18 @@ private fun SignInScreenContent(
         )
 
         OutlinedTextField(
-            value = login,
-            onValueChange = { login = it.trim() },
+            value = username,
+            onValueChange = { username = it.trim() },
             label = {
                 Text(
-                    text = stringResource(R.string.email),
+                    text = stringResource(R.string.username),
                     fontWeight = FontWeight.Bold
                 )
             },
             leadingIcon = {
                 Icon(
-                    imageVector = Icons.Filled.Email,
-                    contentDescription = stringResource(R.string.email)
+                    imageVector = Icons.Filled.Person,
+                    contentDescription = stringResource(R.string.username)
                 )
             },
             colors = TextFieldDefaults.colors(
@@ -171,6 +169,21 @@ private fun SignInScreenContent(
                     contentDescription = stringResource(R.string.password)
                 )
             },
+            trailingIcon = {
+                Icon(
+                    imageVector = if (passwordVisible)
+                        Icons.Filled.Visibility
+                    else Icons.Filled.VisibilityOff,
+                    contentDescription = if (passwordVisible)
+                        context.getString(
+                            R.string.hide_password
+                        )
+                    else context.getString(
+                        R.string.show_password
+                    ),
+                    modifier = Modifier.clickable { passwordVisible = !passwordVisible }
+                )
+            },
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color(0xFFF6F6F6),
                 unfocusedContainerColor = Color(0xFFF6F6F6),
@@ -180,12 +193,11 @@ private fun SignInScreenContent(
             ),
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            visualTransformation = PasswordVisualTransformation(),
+            visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 8.dp)
         )
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -199,9 +211,9 @@ private fun SignInScreenContent(
         }
 
         ButtonPrimary(text = stringResource(id = R.string.login)) {
-            if (viewModel.loginRequest(login, password)) {
-                onLoginClick()
-            } else {
+            if(username.isNotEmpty() && password.isNotEmpty()){
+                onEvent(SignInUiEvent.Authenticate(username, password))
+            }else{
                 appToastShow(context.getString(R.string.login_or_password), context)
             }
         }
@@ -234,7 +246,9 @@ private fun SignInScreenContent(
         )
 
         Row(
-            modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 4.dp),
             horizontalArrangement = Arrangement.Center
         ) {
             val register = stringResource(id = R.string.register)
@@ -260,5 +274,20 @@ private fun SignInScreenContent(
                     }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewSignInContent() {
+    SignInScreenContent(
+        modifier = Modifier,
+        onEvent = {
+            SignInUiEvent.Authenticate("", "")
+        },
+        onBackClick = { /*TODO*/ },
+        onForgotPasswordClick = { /*TODO*/ },
+        onLoginGoogleClick = { /*TODO*/ }) {
+
     }
 }
