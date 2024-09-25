@@ -1,7 +1,7 @@
 package com.artemklymenko.sneakersapp.di
 
-import com.artemklymenko.sneakersapp.network.ProductApi
-import com.artemklymenko.sneakersapp.network.repository.ProductRepository
+import com.artemklymenko.sneakersapp.network.product.ProductApi
+import com.artemklymenko.sneakersapp.network.product.repository.ProductRepository
 import com.artemklymenko.sneakersapp.utils.Constants.PRODUCT_API_URL
 import dagger.Module
 import dagger.Provides

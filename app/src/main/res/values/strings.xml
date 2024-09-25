@@ -22,7 +22,7 @@
     <string name="notifications">Notifications</string>
     <string name="new_notifications">New notifications</string>
     <string name="next">Next</string>
-    <string name="sign_in">SignIn</string>
+    <string name="sign_in">Sign in</string>
     <string name="label_feed">Feed</string>
     <string name="label_favourites">Favourites</string>
     <string name="label_cart">Cart</string>
@@ -78,4 +78,7 @@
     <string name="pay_for_the_sneakers_you_buy_safely_easily"><![CDATA[Pay for the sneakers you buy safely & easily.]]></string>
     <string name="sign_in_or_sign_up">Sign In or Sign Up</string>
     <string name="how_would_you_rate_these_sneakers">How would you rate these sneakers?</string>
+    <string name="username">Username</string>
+    <string name="hide_password">Hide password</string>
+    <string name="show_password">Show password</string>
 </resources>
