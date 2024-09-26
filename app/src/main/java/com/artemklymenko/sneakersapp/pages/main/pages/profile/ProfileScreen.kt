@@ -29,7 +29,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,13 +38,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.artemklymenko.sneakersapp.R
-import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
 import com.artemklymenko.sneakersapp.core.components.TopBarAsText
+import com.artemklymenko.sneakersapp.domain.models.network.auth.User
 
 @Composable
 fun ProfileScreen(
@@ -55,24 +55,34 @@ fun ProfileScreen(
     onNavigateToDeliveryAddress: () -> Unit,
     onNavigateToBillingDetails: () -> Unit,
     onNavigateToLogOut: () -> Unit,
+    user: User,
 ) {
-    LaunchedEffect(key1 = Unit) {
-        viewModel.handleUiEvent(
-            ProfileUiEvent.LoadData
-        )
-    }
-    BaseContentLayout(viewModel = viewModel) { uiState ->
-        uiState?.let {
-            ProfileScreenContent(
-                onNavigateToSettings = onNavigateToSettings,
-                onNavigateToPersonalDetails = onNavigateToPersonalDetails,
-                onNavigateToDeliveryAddress = onNavigateToDeliveryAddress,
-                onNavigateToBillingDetails = onNavigateToBillingDetails,
-                onNavigateToLogOut = onNavigateToLogOut,
-                user = it
-            )
-        }
-    }
+    ProfileScreenContent(
+        onNavigateToSettings = onNavigateToSettings,
+        onNavigateToPersonalDetails = onNavigateToPersonalDetails,
+        onNavigateToDeliveryAddress = onNavigateToDeliveryAddress,
+        onNavigateToBillingDetails = onNavigateToBillingDetails,
+        user = user,
+        onNavigateToLogOut = onNavigateToLogOut
+    )
+    //Local
+//    LaunchedEffect(key1 = Unit) {
+//        viewModel.handleUiEvent(
+//            ProfileUiEvent.LoadData
+//        )
+//    }
+//    BaseContentLayout(viewModel = viewModel) { uiState ->
+//        uiState?.let {
+//            ProfileScreenContent(
+//                onNavigateToSettings = onNavigateToSettings,
+//                onNavigateToPersonalDetails = onNavigateToPersonalDetails,
+//                onNavigateToDeliveryAddress = onNavigateToDeliveryAddress,
+//                onNavigateToBillingDetails = onNavigateToBillingDetails,
+//                onNavigateToLogOut = onNavigateToLogOut,
+//                user = it
+//            )
+//        }
+//    }
 }
 
 @Composable
@@ -81,7 +91,8 @@ private fun ProfileScreenContent(
     onNavigateToPersonalDetails: () -> Unit,
     onNavigateToDeliveryAddress: () -> Unit,
     onNavigateToBillingDetails: () -> Unit,
-    user: ProfileUiState,
+    //user: ProfileUiState, local
+    user: User,
     onNavigateToLogOut: () -> Unit
 ) {
     Column(
@@ -92,7 +103,7 @@ private fun ProfileScreenContent(
     ) {
         TopBarAsText(title = stringResource(id = R.string.label_profile))
         Image(
-            painter = rememberAsyncImagePainter(model = user.urlImage),
+            painter = rememberAsyncImagePainter(model = user.image),
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = Modifier
@@ -102,15 +113,19 @@ private fun ProfileScreenContent(
         )
         Text(
             modifier = Modifier.padding(top = 32.dp),
-            text = user.name + " " + user.surname,
+            text = user.firstName + " " + user.lastName,
             fontWeight = FontWeight.Bold,
-            fontSize = 32.sp
+            fontSize = 32.sp,
+            maxLines = 2,
+            textAlign = TextAlign.Center
         )
         Text(
             modifier = Modifier.padding(top = 8.dp),
             text = user.email,
             fontWeight = FontWeight.Normal,
-            fontSize = 22.sp
+            fontSize = 22.sp,
+            maxLines = 2,
+            textAlign = TextAlign.Center
         )
         Column(
             modifier = Modifier
@@ -212,12 +227,23 @@ fun ProfileScreenContentPreview() {
         onNavigateToPersonalDetails = {  },
         onNavigateToDeliveryAddress = {  },
         onNavigateToBillingDetails = {  },
-        user = ProfileUiState(
+//        user = ProfileUiState(
+//            id = 1,
+//            name = "Jack",
+//            surname = "London",
+//            email = "jack.london@gmail.com",
+//            urlImage = "https://hips.hearstapps.com/hmg-prod/images/gettyimages-3346353-copy.jpg"
+//        )
+        user = User(
             id = 1,
-            name = "Jack",
-            surname = "London",
-            email = "jack.london@gmail.com",
-            urlImage = "https://hips.hearstapps.com/hmg-prod/images/gettyimages-3346353-copy.jpg"
+            username = "username",
+            email =  "email@test.com",
+            firstName = "Jack",
+            lastName = "London",
+            gender = "male",
+            image = "https://hips.hearstapps.com/hmg-prod/images/gettyimages-3346353-copy.jpg",
+            accessToken = "",
+            refreshToken = ""
         )
     ) {
 

@@ -28,15 +28,17 @@ import com.artemklymenko.sneakersapp.pages.success.SuccessScreen
 import com.artemklymenko.sneakersapp.pages.success.SuccessViewModel
 import com.artemklymenko.sneakersapp.pages.welcome.WelcomeScreen
 import com.artemklymenko.sneakersapp.pages.welcome.WelcomeViewModel
+import com.artemklymenko.sneakersapp.utils.SharedViewModel
 
 @Composable
 fun RootAppNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Routes.Main.route,
+    startDestination: String = Routes.Splash.route,
     isDarkTheme: Boolean,
     onThemeChange: () -> Unit
 ) {
+    val sharedViewModel = hiltViewModel<SharedViewModel>()
     NavHost(
         modifier = modifier,
         navController = navController,
@@ -78,7 +80,8 @@ fun RootAppNavigation(
                 onForgotPasswordClick = {
                     //TODO: TBD.
                 },
-                onLoginClick = {
+                onLoginClick = { user ->
+                    sharedViewModel.setUser(user)
                     navController.navigate(route = Routes.Main.route) {
                         popUpTo(0)
                     }
@@ -116,32 +119,35 @@ fun RootAppNavigation(
             )
         }
         composable(Routes.Main.route) {
-            MainScreen(
-                onNavigateToProduct = {
-                    navController.navigate(route = Routes.Product.getProductById(it))
-                },
-                onNavigateToNotifications = {
-                    navController.navigate(route = Routes.Notifications.route)
-                },
-                onChangeFavourite = {
-                    navController.navigate(route = Routes.Favourites.route)
-                },
-                onNavigateToPromoCode = {
-                    navController.navigate(route = Routes.Promo.route)
-                },
-                onNavigateToCheckout = {
-                    navController.navigate(route = Routes.Checkout.route)
-                },
-                onNavigateToSignIn = {
-                    navController.navigate(Routes.SignIn.route) {
-                        popUpTo(0)
-                    }
-                },
-                isDarkTheme = isDarkTheme,
-                onThemeChange = onThemeChange
-            )
+            val user = sharedViewModel.user
+            user?.let {
+                MainScreen(
+                    user = user,
+                    onNavigateToProduct = {
+                        navController.navigate(route = Routes.Product.getProductById(it))
+                    },
+                    onNavigateToNotifications = {
+                        navController.navigate(route = Routes.Notifications.route)
+                    },
+                    onChangeFavourite = {
+                        navController.navigate(route = Routes.Favourites.route)
+                    },
+                    onNavigateToPromoCode = {
+                        navController.navigate(route = Routes.Promo.route)
+                    },
+                    onNavigateToCheckout = {
+                        navController.navigate(route = Routes.Checkout.route)
+                    },
+                    onNavigateToSignIn = {
+                        navController.navigate(Routes.SignIn.route) {
+                            popUpTo(0)
+                        }
+                    },
+                    isDarkTheme = isDarkTheme,
+                    onThemeChange = onThemeChange
+                )
+            }
         }
-
         composable(Routes.Product.route) {
             val viewModel = hiltViewModel<ProductViewModel>()
             val id = it.arguments?.getString(Routes.PRODUCT_ID)?.toInt() ?: -1
