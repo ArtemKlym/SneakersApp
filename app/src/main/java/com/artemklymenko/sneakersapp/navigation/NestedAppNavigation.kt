@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.artemklymenko.sneakersapp.domain.models.network.auth.User
 import com.artemklymenko.sneakersapp.pages.main.pages.cart.CartScreen
 import com.artemklymenko.sneakersapp.pages.main.pages.cart.CartViewModel
 import com.artemklymenko.sneakersapp.pages.main.pages.favourites.FavouritesScreen
@@ -37,7 +38,8 @@ fun NestedAppNavigation(
     onNavigateToPromoCode: () -> Unit,
     onNavigateToCheckout: () -> Unit,
     onNavigateToSignIn: () -> Unit,
-    onThemeChange: () -> Unit
+    onThemeChange: () -> Unit,
+    user: User
 ) {
     NavHost(
         modifier = modifier,
@@ -65,6 +67,7 @@ fun NestedAppNavigation(
 
         profileGraph(
             navController = navController,
+            user = user,
             onNavigateToSignIn = onNavigateToSignIn,
             isDarkTheme = isDarkTheme,
             onThemeChange = onThemeChange
@@ -137,7 +140,8 @@ fun NavGraphBuilder.profileGraph(
     navController: NavHostController,
     onNavigateToSignIn: () -> Unit,
     isDarkTheme: Boolean,
-    onThemeChange: () -> Unit
+    onThemeChange: () -> Unit,
+    user: User
 ) {
     navigation(
         startDestination = Routes.Profile.route,
@@ -147,6 +151,7 @@ fun NavGraphBuilder.profileGraph(
             val viewModel = hiltViewModel<ProfileViewModel>()
             ProfileScreen(
                 viewModel = viewModel,
+                user = user,
                 onNavigateToSettings = {
                     navController.navigate(Routes.Settings.route)
                 },
