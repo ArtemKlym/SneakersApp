@@ -18,6 +18,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.artemklymenko.sneakersapp.domain.models.network.auth.User
 import com.artemklymenko.sneakersapp.navigation.NestedAppNavigation
 import com.artemklymenko.sneakersapp.navigation.Routes
 
@@ -30,7 +31,8 @@ fun MainScreen(
     onNavigateToCheckout: () -> Unit,
     onNavigateToSignIn: () -> Unit,
     isDarkTheme: Boolean,
-    onThemeChange: () -> Unit
+    onThemeChange: () -> Unit,
+    user: User
 ) {
     val navController = rememberNavController()
     val navGraphs: List<Routes> = listOf(
@@ -78,6 +80,7 @@ fun MainScreen(
     ) {
         NestedAppNavigation(
             navController = navController,
+            user = user,
             onNavigateToProduct = onNavigateToProduct,
             onNavigateToNotifications = onNavigateToNotifications,
             onChangeFavourite = onChangeFavourite,
