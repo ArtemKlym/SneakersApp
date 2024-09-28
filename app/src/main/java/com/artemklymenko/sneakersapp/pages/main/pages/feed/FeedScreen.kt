@@ -1,7 +1,6 @@
 package com.artemklymenko.sneakersapp.pages.main.pages.feed
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -49,7 +48,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberAsyncImagePainter
+import coil.compose.AsyncImage
 import com.artemklymenko.sneakersapp.R
 import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
 import com.artemklymenko.sneakersapp.core.components.SearchCategories
@@ -201,9 +200,9 @@ private fun SearchBarView(
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Image(
+                    AsyncImage(
                         modifier = Modifier.size(32.dp),
-                        painter = rememberAsyncImagePainter(model = product.images[0]),
+                        model = product.images[0],
                         contentDescription = null,
                         contentScale = ContentScale.Crop
                     )
@@ -240,15 +239,14 @@ private fun ProductItem(
                     .fillMaxWidth()
                     .height(180.dp)
             ) {
-                Image(
-                    painter = rememberAsyncImagePainter(model = product.images[0]),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
+                AsyncImage(
                     modifier = Modifier
                         .fillMaxSize()
-                        .clip(RectangleShape)
+                        .clip(RectangleShape),
+                    model = product.images[0],
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop
                 )
-
                 Box(
                     modifier = Modifier
                         .padding(8.dp)
