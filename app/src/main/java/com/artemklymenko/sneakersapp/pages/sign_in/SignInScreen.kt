@@ -285,9 +285,9 @@ private fun PreviewSignInContent() {
         onEvent = {
             SignInUiEvent.Authenticate("", "")
         },
-        onBackClick = { /*TODO*/ },
-        onForgotPasswordClick = { /*TODO*/ },
-        onLoginGoogleClick = { /*TODO*/ }) {
+        onBackClick = {},
+        onForgotPasswordClick = {},
+        onLoginGoogleClick = {}) {
 
     }
 }
