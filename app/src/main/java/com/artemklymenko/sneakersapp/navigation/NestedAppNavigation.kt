@@ -24,7 +24,6 @@ import com.artemklymenko.sneakersapp.pages.main.pages.profile.billing.BillingDet
 import com.artemklymenko.sneakersapp.pages.main.pages.profile.personal.PersonalDetailsScreen
 import com.artemklymenko.sneakersapp.pages.main.pages.profile.personal.PersonalDetailsViewModel
 import com.artemklymenko.sneakersapp.pages.main.pages.profile.settings.SettingsScreen
-import com.artemklymenko.sneakersapp.pages.main.pages.profile.settings.SettingsViewModel
 
 @Composable
 fun NestedAppNavigation(
@@ -170,9 +169,7 @@ fun NavGraphBuilder.profileGraph(
         }
 
         composable(Routes.Settings.route) {
-            val viewModel = hiltViewModel<SettingsViewModel>()
             SettingsScreen(
-                viewModel = viewModel,
                 onBackClick = { navController.popBackStack() },
                 isDarkTheme = isDarkTheme,
                 onThemeChange = onThemeChange

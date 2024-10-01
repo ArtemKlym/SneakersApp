@@ -47,7 +47,6 @@ import com.artemklymenko.sneakersapp.core.components.TopBarAsText
 
 @Composable
 fun SettingsScreen(
-    viewModel: SettingsViewModel,
     onBackClick: () -> Unit,
     isDarkTheme: Boolean,
     onThemeChange: () -> Unit
@@ -171,10 +170,7 @@ private fun SettingsItem(
 @Composable
 private fun SettingsScreenPreview() {
     SettingsScreen(
-        viewModel = SettingsViewModel(),
-        onBackClick = { /*TODO*/ },
+        onBackClick = {},
         isDarkTheme = false
-    ) {
-
-    }
+    ) {}
 }
