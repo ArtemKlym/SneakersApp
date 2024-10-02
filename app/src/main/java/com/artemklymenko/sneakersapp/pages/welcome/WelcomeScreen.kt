@@ -44,7 +44,6 @@ import com.artemklymenko.sneakersapp.core.components.ProductDescription
 
 @Composable
 fun WelcomeScreen(
-    viewModel: WelcomeViewModel,
     onNavigationToSignIn: () -> Unit,
     onNavigationToSignUp: () -> Unit
 ) {
@@ -186,7 +185,5 @@ private fun PageContent(
 @Composable
 @Preview(showBackground = true)
 private fun WelcomeScreenContentPreview() {
-    WelcomeScreen(viewModel = WelcomeViewModel(), onNavigationToSignIn = { /*TODO*/ }) {
-
-    }
+    WelcomeScreen(onNavigationToSignIn = {}) {}
 }
