@@ -27,7 +27,6 @@ import com.artemklymenko.sneakersapp.pages.splash.SplashViewModel
 import com.artemklymenko.sneakersapp.pages.success.SuccessScreen
 import com.artemklymenko.sneakersapp.pages.success.SuccessViewModel
 import com.artemklymenko.sneakersapp.pages.welcome.WelcomeScreen
-import com.artemklymenko.sneakersapp.pages.welcome.WelcomeViewModel
 import com.artemklymenko.sneakersapp.utils.SharedViewModel
 
 @Composable
@@ -57,9 +56,7 @@ fun RootAppNavigation(
             )
         }
         composable(Routes.Welcome.route) {
-            val viewModel = hiltViewModel<WelcomeViewModel>()
             WelcomeScreen(
-                viewModel = viewModel,
                 onNavigationToSignIn = {
                     navController.navigate(route = Routes.SignIn.route)
                 },
