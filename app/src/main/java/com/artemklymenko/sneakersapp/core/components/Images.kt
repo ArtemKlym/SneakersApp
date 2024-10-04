@@ -22,6 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import com.artemklymenko.sneakersapp.R
 
@@ -32,13 +33,12 @@ fun ProductImage(
     id: Int,
     onNavigateToProduct: (Int) -> Unit
 ) {
-    Image(
+    AsyncImage(
         modifier = Modifier
             .size(80.dp)
             .clip(RoundedCornerShape(12.dp))
             .clickable { onNavigateToProduct.invoke(id) },
-        alignment = Alignment.Center,
-        painter = rememberAsyncImagePainter(model = url),
+        model = url,
         contentDescription = null,
         contentScale = ContentScale.Crop,
     )
