@@ -344,9 +344,9 @@ object MockUtils {
                 category = "Sneakers",
                 price = 39.99,
                 imageUrls = listOf(
-                    "https://as2.ftcdn.net/v2/jpg/02/11/11/15/1000_F_211111574_VLtzH6ORhebXvnJXjlkAkaUuAftnvmJH.jpg",
-                    "https://as2.ftcdn.net/v2/jpg/02/11/11/15/1000_F_211111574_VLtzH6ORhebXvnJXjlkAkaUuAftnvmJH.jpg",
-                    "https://as2.ftcdn.net/v2/jpg/02/11/11/15/1000_F_211111574_VLtzH6ORhebXvnJXjlkAkaUuAftnvmJH.jpg",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Sports%20Sneakers%20Off%20White%20&%20Red/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Sports%20Sneakers%20Off%20White%20&%20Red/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Sports%20Sneakers%20Off%20White%20&%20Red/1.png",
                 ),
                 isFavourite = true
             ),
@@ -357,9 +357,9 @@ object MockUtils {
                 category = "Sneakers",
                 price = 39.99,
                 imageUrls = listOf(
-                    "https://as1.ftcdn.net/v2/jpg/02/60/22/68/1000_F_260226888_aZ3EJOTSE2ly5TlRuseWexnVkK67KqBl.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/02/60/22/68/1000_F_260226888_aZ3EJOTSE2ly5TlRuseWexnVkK67KqBl.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/02/60/22/68/1000_F_260226888_aZ3EJOTSE2ly5TlRuseWexnVkK67KqBl.jpg",
+                    "ttps://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
+                    "ttps://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
+                    "ttps://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
                 ),
                 isFavourite = true
             ),
@@ -370,9 +370,9 @@ object MockUtils {
                 category = "Sneakers",
                 price = 52.85,
                 imageUrls = listOf(
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Puma%20Future%20Rider%20Trainers/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Puma%20Future%20Rider%20Trainers/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Puma%20Future%20Rider%20Trainers/1.png",
                 ),
                 isFavourite = true
             ),
@@ -383,9 +383,9 @@ object MockUtils {
                 category = "Sneakers",
                 price = 55.55,
                 imageUrls = listOf(
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
                 ),
                 isFavourite = true
             ),
@@ -396,38 +396,12 @@ object MockUtils {
                 category = "Sneakers",
                 price = 74.42,
                 imageUrls = listOf(
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Air%20Jordan%201%20Red%20And%20Black/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Air%20Jordan%201%20Red%20And%20Black/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Air%20Jordan%201%20Red%20And%20Black/1.png",
                 ),
                 isFavourite = true
-            ),
-            ProductDetails(
-                id = 8,
-                title = "Product 8",
-                description = LOREM_IPSUM_SOURCE,
-                category = "Sneakers",
-                price = 33.33,
-                imageUrls = listOf(
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                ),
-                isFavourite = true
-            ),
-            ProductDetails(
-                id = 9,
-                title = "Product 9",
-                description = LOREM_IPSUM_SOURCE,
-                category = "Sneakers",
-                price = 44.44,
-                imageUrls = listOf(
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                    "https://as1.ftcdn.net/v2/jpg/01/03/97/52/1000_F_103975260_sOa1Cq2QNhenLiovsuFo39qRZbi0eXZM.jpg",
-                ),
-                isFavourite = true
-            ),
+            )
         )
     }
 
