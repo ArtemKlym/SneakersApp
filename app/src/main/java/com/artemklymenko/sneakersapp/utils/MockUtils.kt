@@ -292,7 +292,7 @@ object MockUtils {
                 id = 5,
                 title = "Product 5",
                 price = 95.21,
-                imageUrl = "https://as2.ftcdn.net/v2/jpg/02/11/11/15/1000_F_211111574_VLtzH6ORhebXvnJXjlkAkaUuAftnvmJH.jpg",
+                imageUrl = "https://cdn.dummyjson.com/products/images/mens-shoes/Sports%20Sneakers%20Off%20White%20&%20Red/1.png",
                 category = "Sneakers",
                 quantity = 1
             ),
@@ -300,7 +300,7 @@ object MockUtils {
                 id = 6,
                 title = "Product 6",
                 price = 95.21,
-                imageUrl = "https://as1.ftcdn.net/v2/jpg/02/60/22/68/1000_F_260226888_aZ3EJOTSE2ly5TlRuseWexnVkK67KqBl.jpg",
+                imageUrl = "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
                 category = "Sneakers",
                 quantity = 1
             ),
@@ -308,7 +308,7 @@ object MockUtils {
                 id = 2,
                 title = "Product 2",
                 price = 95.21,
-                imageUrl = "https://as1.ftcdn.net/v2/jpg/03/14/89/16/1000_F_314891647_CVY0iUdvxyJ2D6RfP6jNvktTWYdNvy6y.jpg",
+                imageUrl = "https://cdn.dummyjson.com/products/images/mens-shoes/Puma%20Future%20Rider%20Trainers/1.png",
                 category = "Sneakers",
                 quantity = 1
             ),
@@ -316,7 +316,7 @@ object MockUtils {
                 id = 7,
                 title = "Product 7",
                 price = 95.21,
-                imageUrl = "https://as1.ftcdn.net/v2/jpg/03/14/89/16/1000_F_314891647_CVY0iUdvxyJ2D6RfP6jNvktTWYdNvy6y.jpg",
+                imageUrl = "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
                 category = "Sneakers",
                 quantity = 1
             ),
@@ -324,7 +324,7 @@ object MockUtils {
                 id = 4,
                 title = "Product 5",
                 price = 95.21,
-                imageUrl = "https://as1.ftcdn.net/v2/jpg/02/64/98/34/1000_F_264983445_wXVAKMmZe0Q1jJN6R6riVJsajb7fGvx3.jpg",
+                imageUrl = "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Air%20Jordan%201%20Red%20And%20Black/1.png",
                 category = "Sneakers",
                 quantity = 1
             ),
@@ -357,9 +357,9 @@ object MockUtils {
                 category = "Sneakers",
                 price = 39.99,
                 imageUrls = listOf(
-                    "ttps://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
-                    "ttps://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
-                    "ttps://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
+                    "https://cdn.dummyjson.com/products/images/mens-shoes/Nike%20Baseball%20Cleats/1.png",
                 ),
                 isFavourite = true
             ),
