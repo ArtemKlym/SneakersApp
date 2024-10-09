@@ -23,7 +23,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import coil.compose.rememberAsyncImagePainter
 import com.artemklymenko.sneakersapp.R
 
 
@@ -86,13 +85,13 @@ fun ToolbarMenuIcon(
 
 @Composable
 fun ProductSquareImage(imageUrl: String) {
-    Image(
+    AsyncImage(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
             .clip(RectangleShape),
         alignment = Alignment.Center,
-        painter = rememberAsyncImagePainter(model = imageUrl),
+        model = imageUrl,
         contentDescription = null,
         contentScale = ContentScale.Crop,
     )
@@ -101,13 +100,13 @@ fun ProductSquareImage(imageUrl: String) {
 
 @Composable
 fun ProductLandscapePhoto(url: String) {
-    Image(
+    AsyncImage(
         modifier = Modifier
             .fillMaxWidth()
             .height(250.dp)
             .clip(RoundedCornerShape(12.dp)),
         alignment = Alignment.Center,
-        painter = rememberAsyncImagePainter(model = url),
+        model = url,
         contentDescription = null,
         contentScale = ContentScale.Crop,
     )
