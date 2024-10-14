@@ -16,28 +16,42 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.artemklymenko.sneakersapp.R
+import com.artemklymenko.sneakersapp.core.base.BaseContentLayout
 import com.artemklymenko.sneakersapp.core.components.ProgressIndicator
-import kotlinx.coroutines.delay
+import com.artemklymenko.sneakersapp.domain.models.network.auth.User
 
 @Composable
 fun SplashScreen(
     viewModel: SplashViewModel,
-    onNavigationNext: () -> Unit
+    onNavigationWelcome: () -> Unit,
+    onNavigationMain: (User) -> Unit
 ) {
-    Scaffold(
-        content = {
-            SplashScreenContent(
-                modifier = Modifier.padding(it),
-                onNavigationNext = onNavigationNext
-            )
+    LaunchedEffect(key1 = Unit) {
+        viewModel.handleUiEvent(
+            SplashUiEvent.LoadUserInfo
+        )
+    }
+    BaseContentLayout(viewModel = viewModel) { uiState ->
+        Scaffold(
+            content = { padding ->
+                SplashScreenContent(
+                    modifier = Modifier.padding(padding)
+                )
+            }
+        )
+        uiState?.let {
+            if(it.hasToken){
+                onNavigationMain(it.user!!)
+            }else{
+                onNavigationWelcome()
+            }
         }
-    )
+    }
 }
 
 @Composable
 private fun SplashScreenContent(
-    modifier: Modifier,
-    onNavigationNext: () -> Unit
+    modifier: Modifier
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -56,17 +70,13 @@ private fun SplashScreenContent(
                 .padding(top = 32.dp),
             horizontalArrangement = Arrangement.SpaceAround
         ) {
-            ProgressIndicator()
+           ProgressIndicator()
         }
-    }
-    LaunchedEffect(key1 = Unit) {
-        delay(2000)
-        onNavigationNext()
     }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun SplashScreenContentPreview() {
-    SplashScreenContent(modifier = Modifier) {}
+    SplashScreenContent(modifier = Modifier)
 }
