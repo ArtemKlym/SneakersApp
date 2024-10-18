@@ -12,6 +12,7 @@ import com.artemklymenko.sneakersapp.pages.checkout.CheckoutViewModel
 import com.artemklymenko.sneakersapp.pages.confirm.ConfirmScreen
 import com.artemklymenko.sneakersapp.pages.confirm.ConfirmViewModel
 import com.artemklymenko.sneakersapp.pages.main.MainScreen
+import com.artemklymenko.sneakersapp.pages.main.MainViewModel
 import com.artemklymenko.sneakersapp.pages.notifications.NotificationsScreen
 import com.artemklymenko.sneakersapp.pages.notifications.NotificationsViewModel
 import com.artemklymenko.sneakersapp.pages.product.ProductScreen
@@ -48,8 +49,14 @@ fun RootAppNavigation(
             val viewModel = hiltViewModel<SplashViewModel>()
             SplashScreen(
                 viewModel = viewModel,
-                onNavigationNext = {
+                onNavigationWelcome = {
                     navController.navigate(route = Routes.Welcome.route) {
+                        popUpTo(0)
+                    }
+                },
+                onNavigationMain = { user ->
+                    sharedViewModel.setUser(user)
+                    navController.navigate(route = Routes.Main.route) {
                         popUpTo(0)
                     }
                 }
@@ -116,6 +123,7 @@ fun RootAppNavigation(
             )
         }
         composable(Routes.Main.route) {
+            val viewModel = hiltViewModel<MainViewModel>()
             val user = sharedViewModel.user
             user?.let {
                 MainScreen(
@@ -136,6 +144,7 @@ fun RootAppNavigation(
                         navController.navigate(route = Routes.Checkout.route)
                     },
                     onNavigateToSignIn = {
+                        viewModel.logOut()
                         navController.navigate(Routes.SignIn.route) {
                             popUpTo(0)
                         }
