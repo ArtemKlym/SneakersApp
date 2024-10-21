@@ -9,5 +9,6 @@ An Android e-commerce application built using modern Android development best pr
 * Coroutines & Flow
 * Jetpack Navigation
 
-##Demo
+## Project Demo
+
 [sneakersApp_demo.webm](https://github.com/user-attachments/assets/b01b45ff-57f7-4c68-b811-c0edda92cc20)
